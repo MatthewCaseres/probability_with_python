@@ -1,0 +1,650 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counting &#8212; Probability with Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="content.html">
+   Content in Jupyter Book
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="markdown.html">
+     Markdown Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/02-counting.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/matthewcaseres/Probability with Python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/matthewcaseres/Probability with Python/issues/new?title=Issue%20on%20page%20%2F02-counting.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/matthewcaseres/Probability with Python/main?urlpath=tree/docs/02-counting.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#size-of-a-set">
+   Size of a set
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principle-of-inclusion-exclusion">
+   Principle of Inclusion-Exclusion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mutually-exclusive-sets">
+     Mutually Exclusive Sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#or-more-sets">
+     3 or more sets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiplication-principle">
+   Multiplication Principle
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tree-diagrams">
+     Tree diagrams
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cartesian-product">
+     Cartesian product
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#many-independent-choices">
+     Many independent choices
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#permutations">
+   Permutations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#k-permutations-of-n-elements">
+     k-permutations of n elements
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combinations">
+   Combinations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variations">
+   Variations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#piggies-and-markets">
+     Piggies and markets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#we-love-math-problems">
+     We love math problems
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="counting">
+<h1>Counting<a class="headerlink" href="#counting" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="size-of-a-set">
+<h2>Size of a set<a class="headerlink" href="#size-of-a-set" title="Permalink to this headline">¶</a></h2>
+<p>The set <span class="math notranslate nohighlight">\(A = \{5,6\}\)</span> has two elements. The is notation for this is <span class="math notranslate nohighlight">\(n(A) = 2\)</span>. <span class="math notranslate nohighlight">\(n\)</span> is a function that takes a set and outputs the number of elements in it:
+$<span class="math notranslate nohighlight">\(n: \text{Sets} \to \text{Whole Numbers}\)</span>$</p>
+<p>Let the sample space be <span class="math notranslate nohighlight">\(S = \{1,2,3,4,5,6\}\)</span>. Since <span class="math notranslate nohighlight">\(A=\{5,6\}\)</span>, <span class="math notranslate nohighlight">\(A^C= \{1,2,3,4\}\)</span> and <span class="math notranslate nohighlight">\(n(A^C)=4\)</span>. There is a formula for the size of the complement.</p>
+<div class="math notranslate nohighlight">
+\[n(A^C) = n(S) - n(A)=6-2=4\]</div>
+<p>The size of the complement of a set is the size of the sample space minus the size of the set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span>
+<span class="c1"># Use len() to take the size of a set</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The length of S is </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;len(S-A) = len(S) - len(A)? </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">A</span><span class="p">))</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># This isn&#39;t true in general, only when S is the sample space.</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">{</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;If B is not a subset of S does it still work? </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">B</span><span class="p">))</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">B</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The length of S is 6
+len(S-A) = len(S) - len(A)? True
+If B is not a subset of S does it still work? False
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="principle-of-inclusion-exclusion">
+<h2>Principle of Inclusion-Exclusion<a class="headerlink" href="#principle-of-inclusion-exclusion" title="Permalink to this headline">¶</a></h2>
+<p>We define sets <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span> and notice that <span class="math notranslate nohighlight">\(n(A \cup B) \not= n(A) +  n(B)\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">}</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">{</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">B</span><span class="p">))</span><span class="si">}</span><span class="s2"> is the size of the union&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">B</span><span class="p">)</span><span class="si">}</span><span class="s2"> is the len(A) + len(B)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;These are not equal!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4 is the size of the union
+6 is the len(A) + len(B)
+These are not equal!
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is a formula for the size of the union of two sets. This is called the <strong>principle of inclusion-exclusion (PIE)</strong>.</p>
+<div class="math notranslate nohighlight">
+\[n(A \cup B) = n(A) + n(B) - n(A \cap B)\]</div>
+<p>We subtract <span class="math notranslate nohighlight">\(n(A \cap B)\)</span> because the elements of the intersection are counted twice - once in <span class="math notranslate nohighlight">\(n(A)\)</span>, and once in <span class="math notranslate nohighlight">\(n(B)\)</span>. See that <span class="math notranslate nohighlight">\(A \cap B = \{4,5\}\)</span> gets counted in both <span class="math notranslate nohighlight">\(A= \{3,4,5\}\)</span> and <span class="math notranslate nohighlight">\(B=\{4,5,6\}\)</span>. Using PIE we see that <span class="math notranslate nohighlight">\(n(A \cup B) = 3 + 3 - 2 = 4\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">B</span><span class="p">))</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">B</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">B</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="mutually-exclusive-sets">
+<h3>Mutually Exclusive Sets<a class="headerlink" href="#mutually-exclusive-sets" title="Permalink to this headline">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> have no elements in common then <span class="math notranslate nohighlight">\(A \cap B = \emptyset\)</span> and the sets are said to be <strong>mutually exclusive</strong>.</p>
+<div class="math notranslate nohighlight">
+\[A \text{ and } B \text{ are mutually exclusive } \iff A \cap B = \emptyset \iff n(A\cap B) = 0\]</div>
+<p>Since <span class="math notranslate nohighlight">\(n(A\cap B) = 0\)</span> the principle of inclusion-exclusion allows us to add up the sizes of the sets.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+n(A \cup B) &amp;= n(A)+n(B)-n(A \cap B) \text{ inclusion-exclusion} \\ 
+&amp;= n(A)+n(B)-0 \text{ mutually exclusive}\\
+&amp;= n(A)+n(B)
+\end{align*}
+\end{split}\]</div>
+</div>
+<div class="section" id="or-more-sets">
+<h3>3 or more sets<a class="headerlink" href="#or-more-sets" title="Permalink to this headline">¶</a></h3>
+<p>The principle of inclusion-exclusion for three sets can be determined using our result for two sets.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+n(A\cup (B\cup C)) &amp;= n(A) + n(B\cup C) - n(A \cap (B\cup C)) \\
+&amp;= n(A) + n(B\cup C) - n((A \cap B) \cup (B \cap C))
+\end{align*}
+\end{split}\]</div>
+<p>Then we expand <span class="math notranslate nohighlight">\(n(B\cup C)\)</span> and <span class="math notranslate nohighlight">\(n((A \cap B) \cup (B \cap C))\)</span> using PIE to get the following:</p>
+<div class="math notranslate nohighlight">
+\[
+n(A) + n(B) + n(C) - n(A \cap B)-n(B \cap C)-n(C \cap A) + n(A \cap B \cap C)
+\]</div>
+<p>Generally, we add the sizes of the individual sets, subtract the sizes of combinations of two sets, add the sizes of combinations of three sets, subtract the size of combinations of four sets, and add the size of combinations of five sets, etc. So this formula works for the union of arbitrary numbers of sets.</p>
+</div>
+</div>
+<div class="section" id="multiplication-principle">
+<h2>Multiplication Principle<a class="headerlink" href="#multiplication-principle" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tree-diagrams">
+<h3>Tree diagrams<a class="headerlink" href="#tree-diagrams" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>I have a red shirt and a blue shirt.</p></li>
+<li><p>I have a green hat, a pink hat, and a black hat.</p></li>
+</ul>
+<p>How many different shirt/hat combinations can I wear?</p>
+<p>We can make a <strong>tree diagram</strong> to find that there are 6 combinations.</p>
+<p><img alt="" src="images/02-counting/Tree.PNG" /></p>
+</div>
+<div class="section" id="cartesian-product">
+<h3>Cartesian product<a class="headerlink" href="#cartesian-product" title="Permalink to this headline">¶</a></h3>
+<p>The set <span class="math notranslate nohighlight">\(\{(a,b)|a \in A \text{ and } b \in B\}\)</span> is the set of ordered pairs of elements from <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>. It has a special name, the <strong>cartesian product</strong>. The notation for this is <span class="math notranslate nohighlight">\(A \times B\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[A \times B = \{(a,b)|a \in A \text{ and } b \in B\}\]</div>
+<p>The size of the cartesian product is the product of the sizes of the sets.</p>
+<div class="math notranslate nohighlight">
+\[n(A \times B) = n(A) \cdot n(B)\]</div>
+<p>In our previous example with shirts and hats we can think of the set of shirts <span class="math notranslate nohighlight">\(S\)</span> and hats <span class="math notranslate nohighlight">\(H\)</span>, and the set of combinations as the set <span class="math notranslate nohighlight">\(S \times H\)</span>, so there are <span class="math notranslate nohighlight">\(n(S) \times n(H) = 3 \cdot 2 = 6\)</span> combinations.</p>
+</div>
+<div class="section" id="many-independent-choices">
+<h3>Many independent choices<a class="headerlink" href="#many-independent-choices" title="Permalink to this headline">¶</a></h3>
+<p>If we are making <span class="math notranslate nohighlight">\(n\)</span> independent selections with <span class="math notranslate nohighlight">\(a_1, a_2, ..., a_n\)</span> options for our selections the total number of choices is the product of the number of choices for each selection.</p>
+<div class="math notranslate nohighlight">
+\[a_1 \times a_2 \times ... \times a_n=\displaystyle\prod_{k=1}^{n} a_k\]</div>
+<p>You can think about this as the cartesian product of many sets.</p>
+<p>There are two options for each flip of a coin. The number of possible sequences of <span class="math notranslate nohighlight">\(4\)</span> coin flips is <span class="math notranslate nohighlight">\(\prod_{k=1}^{4} 2 = 2^4\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find all sequences of coin flips of length n. We use a list comprehension to generate the new sequences.</span>
+<span class="k">def</span> <span class="nf">coin_flips</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+  <span class="n">sequences</span> <span class="o">=</span> <span class="p">[[]]</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">sequences</span> <span class="o">=</span> <span class="p">[</span><span class="n">seq</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">sequences</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">seq</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">sequences</span><span class="p">]</span>
+  <span class="k">return</span> <span class="n">sequences</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">coin_flips</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span><span class="si">}</span><span class="s2"> sequences&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The combinations are: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">coin_flips</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 16 sequences
+The combinations are: 
+ [[&#39;H&#39;, &#39;H&#39;, &#39;H&#39;, &#39;H&#39;], [&#39;T&#39;, &#39;H&#39;, &#39;H&#39;, &#39;H&#39;], [&#39;H&#39;, &#39;T&#39;, &#39;H&#39;, &#39;H&#39;], [&#39;T&#39;, &#39;T&#39;, &#39;H&#39;, &#39;H&#39;], [&#39;H&#39;, &#39;H&#39;, &#39;T&#39;, &#39;H&#39;], [&#39;T&#39;, &#39;H&#39;, &#39;T&#39;, &#39;H&#39;], [&#39;H&#39;, &#39;T&#39;, &#39;T&#39;, &#39;H&#39;], [&#39;T&#39;, &#39;T&#39;, &#39;T&#39;, &#39;H&#39;], [&#39;H&#39;, &#39;H&#39;, &#39;H&#39;, &#39;T&#39;], [&#39;T&#39;, &#39;H&#39;, &#39;H&#39;, &#39;T&#39;], [&#39;H&#39;, &#39;T&#39;, &#39;H&#39;, &#39;T&#39;], [&#39;T&#39;, &#39;T&#39;, &#39;H&#39;, &#39;T&#39;], [&#39;H&#39;, &#39;H&#39;, &#39;T&#39;, &#39;T&#39;], [&#39;T&#39;, &#39;H&#39;, &#39;T&#39;, &#39;T&#39;], [&#39;H&#39;, &#39;T&#39;, &#39;T&#39;, &#39;T&#39;], [&#39;T&#39;, &#39;T&#39;, &#39;T&#39;, &#39;T&#39;]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is important that our choices are independent. If I have three shirts and I want to wear two shirts at the same time, I can’t wear the same shirt twice. So with my red and blue shirts I can have pairs (red, blue), (blue, red) but not (red, red) or (blue, blue). Let’s investigate this.</p>
+</div>
+</div>
+<div class="section" id="permutations">
+<h2>Permutations<a class="headerlink" href="#permutations" title="Permalink to this headline">¶</a></h2>
+<p>Permutations rearrange elements of a set into ordered outcomes. How many ways can we order the elements of the set <span class="math notranslate nohighlight">\(A = \{1,2,3\}\)</span>?  Let’s draw a tree diagram.</p>
+<p><img alt="" src="images/02-counting/permute3large.PNG" /></p>
+<p>There are three options for our first selection, two options for our second selection, and one option for our third selection. The multiplication principle gives us 6 permutations of the set <span class="math notranslate nohighlight">\(\{1,2,3\}\)</span>. Generally if <span class="math notranslate nohighlight">\(n(A) = m\)</span> there are <span class="math notranslate nohighlight">\(m \times (m-1) \times ... \times 2 \times 1 = m!\)</span> permutations of the set <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>Sometimes permutations are more obvious than others. The possible outcomes in a three person race are obviously a permutation because we are ordering a set. But order isn’t always involved. How many ways can I give three candy bars to my three friends? I have <span class="math notranslate nohighlight">\(3\)</span> options for the first candy bar, <span class="math notranslate nohighlight">\(2\)</span> options for the second, and <span class="math notranslate nohighlight">\(1\)</span> option for the third. If I gave away all the candy bars at the same time there is no sense of “ordering” but still this is a permutation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itertools</span>
+
+<span class="c1"># We can use the itertools.permutations() function from the Python standard library</span>
+<span class="n">permutationsGenerator</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">permutations</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="c1"># The return type of itertools.permutations() is a generator. </span>
+<span class="c1"># Python will not store all the values in memory, but instead will generate them one at a time.</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The return type of itertools.permutations is </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">permutationsGenerator</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># You can use next() to get the next permutation.</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Permutation 1 is </span><span class="si">{</span><span class="nb">next</span><span class="p">(</span><span class="n">permutationsGenerator</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Permutation 2 is </span><span class="si">{</span><span class="nb">next</span><span class="p">(</span><span class="n">permutationsGenerator</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># We can convert the generator to a list and print them.</span>
+<span class="n">permutations</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">permutationsGenerator</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The permutations of [1,2,3] are: </span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">permutations</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># We can write our own function too.</span>
+<span class="k">def</span> <span class="nf">generatePermutations</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">[[]]</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">permutations</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+      <span class="n">permutations</span> <span class="o">+=</span> <span class="p">[[</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+</span> <span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">generatePermutations</span><span class="p">(</span><span class="n">nums</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:])]</span>
+    <span class="k">return</span> <span class="n">permutations</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The return type of itertools.permutations is &lt;class &#39;itertools.permutations&#39;&gt;
+Permutation 1 is (1, 2, 3)
+Permutation 2 is (1, 3, 2)
+The permutations of [1,2,3] are: 
+ [(2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)]
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1693</span><span class="o">/</span><span class="mf">223144171.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> 
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="c1"># We can write our own function too.</span>
+<span class="ne">---&gt; </span><span class="mi">19</span> <span class="k">def</span> <span class="nf">generatePermutations</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span>   <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="k">return</span> <span class="p">[[]]</span>
+
+<span class="ne">TypeError</span>: &#39;type&#39; object is not subscriptable
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="k-permutations-of-n-elements">
+<h3>k-permutations of n elements<a class="headerlink" href="#k-permutations-of-n-elements" title="Permalink to this headline">¶</a></h3>
+<p>In a <span class="math notranslate nohighlight">\(10\)</span> person race how many possible outcomes are there for the top <span class="math notranslate nohighlight">\(3\)</span>?</p>
+<p>There are <span class="math notranslate nohighlight">\(10\)</span> options for first place, <span class="math notranslate nohighlight">\(9\)</span> options for second place, and <span class="math notranslate nohighlight">\(8\)</span> options for third place. The answer is <span class="math notranslate nohighlight">\(10 \cdot 9 \cdot 8 = 720\)</span>. The general formula for the top <span class="math notranslate nohighlight">\(k\)</span> racers in an <span class="math notranslate nohighlight">\(n\)</span> person race is:</p>
+<div class="math notranslate nohighlight">
+\[n \times (n-1) \times ... \times (n-k+1) = \frac{n!}{(n-k)!}\]</div>
+<p>The notation for this is <span class="math notranslate nohighlight">\(P(n,k) = \frac{n!}{(n-k)!}\)</span>. <span class="math notranslate nohighlight">\(P(n,k)\)</span> is pronounced “<span class="math notranslate nohighlight">\(n\)</span> permute <span class="math notranslate nohighlight">\(k\)</span>”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The second argument is the number of items to choose from.</span>
+<span class="n">permutations</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">permutations</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2-permutations of 3 items: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">permutations</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2-permutations of 3 items: [(1, 2), (1, 3), (2, 1), (2, 3), (3, 1), (3, 2)]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="combinations">
+<h2>Combinations<a class="headerlink" href="#combinations" title="Permalink to this headline">¶</a></h2>
+<p>How many ways can I pick <span class="math notranslate nohighlight">\(2\)</span> numbers from the set <span class="math notranslate nohighlight">\(\{1,2,3\}\)</span>? We have 3 options for the first person, 2 options for the second person, so the answer is <span class="math notranslate nohighlight">\(6\)</span>? <strong>Wrong</strong>, because this assumes that order is important. The order is not important so the pairs <span class="math notranslate nohighlight">\((1,2)\)</span> and <span class="math notranslate nohighlight">\((2,1)\)</span> are the same. This changes our answer to <span class="math notranslate nohighlight">\(3\)</span>.</p>
+<p><img alt="" src="images/02-counting/P(3,2)vsC(3,2).PNG" /></p>
+<p>The difference between permutations and combinations is that combinations don’t have an order. So there are <span class="math notranslate nohighlight">\(2\)</span> permutations for every combination in the previous example. If we chose <span class="math notranslate nohighlight">\(3\)</span> numbers there are <span class="math notranslate nohighlight">\(3! = 6\)</span> permutations and <span class="math notranslate nohighlight">\(1\)</span> combination. In general we see that <span class="math notranslate nohighlight">\(P(n,k) = C(n,k) \cdot k!\)</span>. Solving for <span class="math notranslate nohighlight">\(C(n,k)\)</span> we get:</p>
+<div class="math notranslate nohighlight">
+\[C(n,k) = \frac{P(n,k)}{k!} = \frac{n!}{k!(n-k)!}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We use itertools.combinations()</span>
+<span class="n">combinations</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2-combinations of 3 items: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">combinations</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># We can also write our own function.</span>
+<span class="k">def</span> <span class="nf">combine</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">[[]]</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">combine</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2-combinations of 3 items: [(1, 2), (1, 3), (2, 3)]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="variations">
+<h2>Variations<a class="headerlink" href="#variations" title="Permalink to this headline">¶</a></h2>
+<p>Problems can involve several of the previous principles.</p>
+<div class="section" id="piggies-and-markets">
+<h3>Piggies and markets<a class="headerlink" href="#piggies-and-markets" title="Permalink to this headline">¶</a></h3>
+<p>There is a set of <span class="math notranslate nohighlight">\(9\)</span> distinct pigs. Three go to the market, three go to Arby’s, and three go home. How many ways can this happen?</p>
+<p>There are <span class="math notranslate nohighlight">\(9 \choose 3\)</span> ways to select the piggies for the market. After that selection is made there are <span class="math notranslate nohighlight">\(6 \choose 3\)</span> ways to select the piggies for Arby’s. The remaining three piggies go home. The answer is then:</p>
+<div class="math notranslate nohighlight">
+\[{9 \choose 3}{6 \choose 3}{3 \choose 3} = \frac{9!}{3!6!}\cdot \frac{6!}{3!3!} \cdot \frac{3!}{3!0!} = \frac{9!}{3!3!3!}\]</div>
+<p>There is a general principle at work here. If we divide a set into mutually exclusive subsets then the number on the top is the size of the set and the numbers on the bottom are the size of the subsets. Verify that this is true for dividing a set into two sets (hint: it is just the formula for combinations).</p>
+<p>We can rephrase the piggies question as “How many ways can you rearrange the letters of ‘aaabbbccc’?” To see that these questions are the same let each position of the letter be a piggy and assign the market, Arby’s, and home to the letters a, b, and c. Select positions in groups of three to assign the letters to.</p>
+</div>
+<div class="section" id="we-love-math-problems">
+<h3>We love math problems<a class="headerlink" href="#we-love-math-problems" title="Permalink to this headline">¶</a></h3>
+<p>How many ways could I rank my 10 favorite math problems from a list of 20 and then do 5 of them? There are <span class="math notranslate nohighlight">\(P(20,10)\)</span> possible rankings of my top 10 problems. There are <span class="math notranslate nohighlight">\(10 \choose 5\)</span> ways to choose from the selected problems. The answer is then:</p>
+<div class="math notranslate nohighlight">
+\[P(20,10)\times{10 \choose 5} = 168,951,528,345,600\]</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Open Source Actuaries<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
