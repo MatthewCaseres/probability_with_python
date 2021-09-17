@@ -1,0 +1,650 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Probability Basics &#8212; Probability with Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Counting" href="02-counting.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-sets.html">
+   An Introduction to Set Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-counting.html">
+   Counting
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Probability Basics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/03-probability.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/matthewcaseres/Probability with Python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/matthewcaseres/Probability with Python/issues/new?title=Issue%20on%20page%20%2F03-probability.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/matthewcaseres/Probability with Python/main?urlpath=tree/docs/03-probability.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#equally-likely-events">
+   Equally likely events
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#playing-cards-example">
+     Playing cards example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#terminology">
+   Terminology
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#experiments">
+     Experiments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sample-space">
+     Sample space
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#events">
+     Events
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-functions">
+   Probability Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-axioms">
+   Probability Axioms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-properties">
+   Probability Properties
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conditional-probability">
+   Conditional Probability
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#formulas">
+     Formulas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#independence">
+   Independence
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayes-theorem">
+   Bayes Theorem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bayes-theorem-intuition">
+     Bayes Theorem Intuition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#law-of-total-probability">
+     Law of Total Probability
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bayes-theorem-formula">
+     Bayes Theorem Formula
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="probability-basics">
+<h1>Probability Basics<a class="headerlink" href="#probability-basics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="equally-likely-events">
+<h2>Equally likely events<a class="headerlink" href="#equally-likely-events" title="Permalink to this headline">¶</a></h2>
+<p>If we flip a fair coin, the probability of getting heads or tails is equal. What this means is that if we flip a coin many times that the percentage of both heads and tails will go to 50%.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+    
+<span class="c1"># Runs n trials of a coin flip and returns the number of heads and tails.</span>
+<span class="k">def</span> <span class="nf">runTrials</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="n">heads</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">tails</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+      <span class="c1"># random.random() returns a random number between 0 and 1. Half the time this value is less than 0.5.</span>
+        <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="n">heads</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tails</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">heads</span><span class="p">,</span> <span class="n">tails</span>
+    
+
+<span class="c1"># Format the output of runTrials.</span>
+<span class="k">def</span> <span class="nf">printResults</span><span class="p">(</span><span class="n">heads</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">tails</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trials:&quot;</span><span class="p">,</span> <span class="n">heads</span> <span class="o">+</span> <span class="n">tails</span><span class="p">,</span> <span class="s2">&quot;Proportion:&quot;</span><span class="p">,</span> <span class="n">heads</span><span class="o">/</span><span class="p">(</span><span class="n">heads</span><span class="o">+</span><span class="n">tails</span><span class="p">),</span><span class="s2">&quot;Heads:&quot;</span><span class="p">,</span> <span class="n">heads</span><span class="p">,</span> <span class="s2">&quot;Tails:&quot;</span><span class="p">,</span> <span class="n">tails</span><span class="p">)</span>
+
+<span class="c1"># The * operator unpacks a list or tuple into separate variables.</span>
+<span class="n">printResults</span><span class="p">(</span><span class="o">*</span><span class="n">runTrials</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">printResults</span><span class="p">(</span><span class="o">*</span><span class="n">runTrials</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">printResults</span><span class="p">(</span><span class="o">*</span><span class="n">runTrials</span><span class="p">(</span><span class="mi">1_000_000</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trials: 10 Proportion: 0.4 Heads: 4 Tails: 6
+Trials: 100 Proportion: 0.5 Heads: 50 Tails: 50
+Trials: 1000000 Proportion: 0.499231 Heads: 499231 Tails: 500769
+</pre></div>
+</div>
+</div>
+</div>
+<p>In our previous example we made a <strong>random selection</strong> between heads and tails. A random selection means that each value is equally likely. For example, a randomly selected card from a deck of <span class="math notranslate nohighlight">\(52\)</span> cards has probability <span class="math notranslate nohighlight">\(1/52\)</span> of being a 2 of clubs.</p>
+<p>When every possible outcome has equal probability, the formula for the probability of some subset of the outcomes is:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\text{Number of Selected Outcomes}}{\text{Number of Total Possible Outcomes}}\]</div>
+<p>For our coin flipping example, we have <span class="math notranslate nohighlight">\(2\)</span> possible outcomes: heads and tails. The number of selected outcomes is <span class="math notranslate nohighlight">\(1\)</span> (either heads or tails), so the probability is <span class="math notranslate nohighlight">\(1/2\)</span>.</p>
+<div class="section" id="playing-cards-example">
+<h3>Playing cards example<a class="headerlink" href="#playing-cards-example" title="Permalink to this headline">¶</a></h3>
+<p><strong>What is the probability of drawing 4 aces when we randomly select 5 cards from a deck?</strong></p>
+<p>To draw the 4 aces, we must select 5 cards. 4 of them are aces and 1 of them is not. <span class="math notranslate nohighlight">\({4 \choose 4}\)</span> is the number of ways to select 4 aces. <span class="math notranslate nohighlight">\({48 \choose 1}\)</span> is the number of ways to select the non-ace. The number of ways to select the 4 aces is:</p>
+<div class="math notranslate nohighlight">
+\[{4 \choose 4}{48 \choose 1} = 48\]</div>
+<p>The number of ways to draw 5 cards is:</p>
+<div class="math notranslate nohighlight">
+\[{52 \choose 5} = 2598960\]</div>
+<p>The answer is then:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\text{Ways to select 4 aces}}{\text{Ways to select 5 cards}} = \frac{48}{2598960} = \frac{1}{54145}\]</div>
+</div>
+</div>
+<div class="section" id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="experiments">
+<h3>Experiments<a class="headerlink" href="#experiments" title="Permalink to this headline">¶</a></h3>
+<p>When we flip a coin or roll a die that is an <strong>experiment</strong>. Experiments have a set of possible outcomes that happen with some probability.</p>
+</div>
+<div class="section" id="sample-space">
+<h3>Sample space<a class="headerlink" href="#sample-space" title="Permalink to this headline">¶</a></h3>
+<p>The set of all possible outcomes of an experiment is the <strong>sample space</strong>. When we flip a coin once the sample space is <span class="math notranslate nohighlight">\(S=\{H,T\}\)</span>. When we flip a coin twice the sample space is <span class="math notranslate nohighlight">\(S=\{HH,HT,TH,TT\}\)</span>.</p>
+</div>
+<div class="section" id="events">
+<h3>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h3>
+<p><strong>Events</strong> represent a set of possible outcomes from an experiment. When we flip two coins there is an event for flipping two heads, <span class="math notranslate nohighlight">\(E_\text{both heads}=\{HH\}\)</span>. There is also an event for not flipping two heads <span class="math notranslate nohighlight">\(E_\text{not both heads}=\{HT,TH,TT\}\)</span>. An event is a subset of the sample space. It may represent a single outcome of our experiment, or it may represent several of the possible outcomes:
+$<span class="math notranslate nohighlight">\(E \subseteq S\)</span>$</p>
+<p>We can rewrite our formula for probabilities when all outcomes of an experiment are equally likely using <span class="math notranslate nohighlight">\(n(E)\)</span> for the number of selected outcomes.
+$<span class="math notranslate nohighlight">\(\frac{\text{Number of Selected Outcomes}}{\text{Number of Total Possible Outcomes}} = \frac{n(E)}{n(S)}\)</span>$</p>
+</div>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p><strong>We roll two dice and want to calculate the probability that the dice sum to 4. Define the experiment, sample space, event, and calculate the probability of the event.</strong></p>
+<p>The experiment is rolling two dice.</p>
+<p>The sample space is the set of all possible ordered combinations of two dice. We can define it in set builder notation:
+$<span class="math notranslate nohighlight">\(S=\{(a,b)|a,b \in \{1,2,3,4,5,6\}\}\)</span><span class="math notranslate nohighlight">\(
+\)</span>n(S) = 36<span class="math notranslate nohighlight">\( because there are \)</span>6$ possible outcomes for each die and we use the multiplication principle.</p>
+<p>The event contains the elements of the sample space that sum to 4.
+$<span class="math notranslate nohighlight">\(E = \{(1,3),(3,1),(2,2)\}\)</span>$</p>
+<p>The probability is
+$<span class="math notranslate nohighlight">\(\frac{\text{Number of Selected Outcomes}}{\text{Number of Total Possible Outcomes}} = \frac{n(E)}{n(S)} = \frac{3}{36}=\frac{1}{12}\)</span>$</p>
+</div>
+</div>
+<div class="section" id="probability-functions">
+<h2>Probability Functions<a class="headerlink" href="#probability-functions" title="Permalink to this headline">¶</a></h2>
+<p>A probability function <span class="math notranslate nohighlight">\(P\)</span> calculates the probability of an event. When we flip a coin twice the probability of getting a head and a tail is:
+$<span class="math notranslate nohighlight">\(P(\{HT, TH\})=.5\)</span>$</p>
+<p>For experiments where all outcomes are equally likely:
+$<span class="math notranslate nohighlight">\(P(E) = \frac{n(E)}{n(S)}\)</span>$</p>
+<p>A probability is between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> because an event can’t happen less than <span class="math notranslate nohighlight">\(0\%\)</span> of the time or more than <span class="math notranslate nohighlight">\(100\%\)</span> of the time. More formally, <span class="math notranslate nohighlight">\(P\)</span> is a function that takes an event as input and gives a number between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> as output. In notation:</p>
+<div class="math notranslate nohighlight">
+\[P:E \mapsto [0,1]\]</div>
+<p>The rule about probabilities being between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span> is derived from some more basic assumptions and not intuition about the percentage of times something occurs. Let’s talk about these basic assumptions.</p>
+</div>
+<div class="section" id="probability-axioms">
+<h2>Probability Axioms<a class="headerlink" href="#probability-axioms" title="Permalink to this headline">¶</a></h2>
+<p>There are three fundamental assumptions (called axioms) about probability functions from which our other laws are derived.</p>
+<p><strong>First Axiom</strong> - For an event <span class="math notranslate nohighlight">\(E\)</span>, and probability function <span class="math notranslate nohighlight">\(P\)</span>:
+$<span class="math notranslate nohighlight">\(P(E) \geq 0\)</span>$</p>
+<p><strong>Second Axiom</strong> - For a sample space <span class="math notranslate nohighlight">\(S\)</span>:
+$<span class="math notranslate nohighlight">\(P(S)=1\)</span>$</p>
+<p><strong>Third Axiom</strong> - If <span class="math notranslate nohighlight">\(E_1, E_2, ...E_n\)</span> are <strong>mutually exclusive</strong> events:
+$<span class="math notranslate nohighlight">\(P(\bigcup\limits_{i=1}^{\infty} E_{i})=P(E_1 \cup E_2 \cup...\cup En \cup...) = P(E1)+P(E2)+...+P(En)+...\)</span>$</p>
+<p>Recall that mutually exclusive means that sets have empty intersections. We have already seen that <span class="math notranslate nohighlight">\(n(E_1 \cup E_2) = n(E_1) + n(E_2)\)</span> for mutually exclusive events. Our third axiom says something similar for the probability of mutually exclusive events, <span class="math notranslate nohighlight">\(P(E_1 \cup E_2) = P(E_1) + P(E_2)\)</span></p>
+</div>
+<div class="section" id="probability-properties">
+<h2>Probability Properties<a class="headerlink" href="#probability-properties" title="Permalink to this headline">¶</a></h2>
+<p>From our axioms we can derive important properties of probability functions.</p>
+<p>For example, We can show that <span class="math notranslate nohighlight">\(P(A) + P(A^C) = 1\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P(A)+P(A^C) &amp;= P(A \cup A^C) \text{ by Axiom 3} \\
+&amp;= P(S) = 1 \text{ by Axiom 2}
+\end{align*}
+\end{split}\]</div>
+<p>This implies that <span class="math notranslate nohighlight">\(P(A^C) = 1 - P(A)\)</span>.</p>
+<p>Here are some useful formulas that can be derived from these axioms.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+&amp;\text{Complements}: \ P(A^C) = 1 - P(A) \\
+&amp;\text{Upper  Bound}:P(A) \leq 1 \\
+&amp;\text{Probability of 2 Unions}: P(A \cup B) = P(A) + P(B) - P(A \cap B)
+\end{align*}
+\end{split}\]</div>
+<p>As with counting, the formula for two unions gives us a formula for 3 unions.</p>
+<div class="math notranslate nohighlight">
+\[
+P(A) + P(B) + P(C) - P(A \cap B)-P(B \cap C)-P(C \cap A) + P(A \cap B \cap C)
+\]</div>
+<p>Notice that these formulas are the same as our formulas for the size of the set if we swap out <span class="math notranslate nohighlight">\(P\)</span> for <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(1\)</span> for <span class="math notranslate nohighlight">\(n(S)\)</span>.</p>
+<hr class="docutils" />
+<p><strong>Example: Coin Flipping and Axioms</strong></p>
+<p>If we flip a coin, heads and tails are mutually exclusive events.
+$<span class="math notranslate nohighlight">\(P(\{H\} \cup \{T\}) = P(\{H\})+P(\{T\}) = .5 + .5 = 1\)</span><span class="math notranslate nohighlight">\( 
+We know that \)</span>P({H}), P({T})=.5<span class="math notranslate nohighlight">\( from our formula for equally likely events at the beginning of the chapter. Note that \)</span>S = {H} \cup {T}<span class="math notranslate nohighlight">\( so this example also illustrates that \)</span>P(S)=1$.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="conditional-probability">
+<h2>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we have some cats and dogs that are either fluffy or not fluffy.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Row title</p></th>
+<th class="head"><p>Fluffy</p></th>
+<th class="head"><p>Not fluffy</p></th>
+<th class="head"><p>Total</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Cats</strong></p></td>
+<td><p>21</p></td>
+<td><p>18</p></td>
+<td><p><strong>39</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Dogs</strong></p></td>
+<td><p>35</p></td>
+<td><p>26</p></td>
+<td><p><strong>61</strong></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Total</strong></p></td>
+<td><p><strong>56</strong></p></td>
+<td><p><strong>44</strong></p></td>
+<td><p><strong>100</strong></p></td>
+</tr>
+</tbody>
+</table>
+<p>We can calculate the probability of a randomly selected pet being fluffy using our formula for equally likely events.</p>
+<div class="math notranslate nohighlight">
+\[\frac{\text{Number of Fluffy Pets}}{\text{Total Number of Pets}} = \frac{n(\text{Fluffy})}{n(\text{Pets})} = \frac{56}{100}\]</div>
+<p>We can calculate the probability of a pet being a fluffy cat as:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\text{Number of Fluffy Cats}}{\text{Total Number of Pets}} = \frac{n(\text{Fluffy} \cap \text{Cat})}{n(\text{Pets})} = \frac{21}{100}\]</div>
+<p>We can also calculate the probability of a pet being fluffy, given that the pet is a cat. Notice that the denominator is not all the pets, but only the number of cats.</p>
+<div class="math notranslate nohighlight">
+\[\frac{\text{Number of Fluffy Cats}}{\text{Total Number of Cats}} = \frac{n(\text{Fluffy} \cap \text{Cat})}{n(\text{Cats})}=\frac{21}{39}\]</div>
+<p>This is a <strong>conditional probability</strong> because it is conditioned on the pet being a cat. There is notation for this.</p>
+<div class="math notranslate nohighlight">
+\[P(\text{Fluffy|Cat}) = P(\text{Pet is fluffy, given that the pet is a cat})\]</div>
+<p>Notice that <span class="math notranslate nohighlight">\(P(\text{Fluffy|Cat})\)</span> does not mean the same thing as <span class="math notranslate nohighlight">\(P(\text{Fluffy})\)</span>.</p>
+<div class="section" id="formulas">
+<h3>Formulas<a class="headerlink" href="#formulas" title="Permalink to this headline">¶</a></h3>
+<p>The probability of event <span class="math notranslate nohighlight">\(A\)</span> given that event <span class="math notranslate nohighlight">\(B\)</span> has occurred is denoted <span class="math notranslate nohighlight">\(P(A|B)\)</span> and pronounced “the probability of A given B”.
+The general formula for this is $<span class="math notranslate nohighlight">\(P(A|B)=\frac{P(A \cap B)}{P(B)}\)</span>$</p>
+<p>We can calculate <span class="math notranslate nohighlight">\(P(A \cap B)\)</span> by rearranging the formula.</p>
+<div class="math notranslate nohighlight">
+\[P(A|B) \cdot P(B) = P(A \cap B)\]</div>
+<p>Conceptuaize this as an event B happening with probability <span class="math notranslate nohighlight">\(P(B)\)</span> and then an event <span class="math notranslate nohighlight">\(A\)</span> happening with probability <span class="math notranslate nohighlight">\(P(A|B)\)</span>, so <span class="math notranslate nohighlight">\(P(A \cap B) = P(B) \cdot P(A|B)\)</span></p>
+<p>For experiments where all outcomes have equal probabilities <span class="math notranslate nohighlight">\(P(A|B)\)</span> can be calculated with set sizes. Here is a derivation:
+$<span class="math notranslate nohighlight">\(P(A|B)=\frac{n(A \cap B)/n(S)}{n(B)/n(S)}=\frac{n(A \cap B)}{n(B)}\)</span>$</p>
+</div>
+</div>
+<div class="section" id="independence">
+<h2>Independence<a class="headerlink" href="#independence" title="Permalink to this headline">¶</a></h2>
+<p>Events are <strong>independent</strong> if they do not influence each other. The second flip of a coin is not influenced by the first flip, so the two events are independent.</p>
+<p>If two events influence each other they are not independent. Let the event that the first card pulled without replacement from a deck is a jack be <span class="math notranslate nohighlight">\(J_1\)</span> and the event that the second card pulled is a jack is <span class="math notranslate nohighlight">\(J_2\)</span>. If I pull a jack on my first try there will be less jacks in the deck for the second draw. The event <span class="math notranslate nohighlight">\(J_1\)</span> has an effect on <span class="math notranslate nohighlight">\(J_2\)</span> and these events are not independent.</p>
+<hr class="docutils" />
+<p><strong>Definition of Independence</strong>: Events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are said to be independent if <span class="math notranslate nohighlight">\(P(A|B)=P(A)\)</span>.</p>
+<hr class="docutils" />
+<p>This definition is equivalent to <span class="math notranslate nohighlight">\(P(A \cap B) = P(A) \cdot P(B)\)</span> after substitution with the conditional probability formulas. This identity has it’s own name:</p>
+<hr class="docutils" />
+<p><strong>Multiplication Rule for Independent Events</strong>: If <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are independent events then <span class="math notranslate nohighlight">\(P(A \cap B) = P(A) \cdot P(B)\)</span>.</p>
+<hr class="docutils" />
+<p>Let <span class="math notranslate nohighlight">\(H_n\)</span> be the event that the nth flip of a coin is heads so that <span class="math notranslate nohighlight">\(H_2\)</span> means the second coin flip is heads. The multiplication rule for independent events works for more than two events if all events are mutually independent so that <span class="math notranslate nohighlight">\(P(H_1 \cap H_2 \cap H_3 \cap H_4)=P(H_1)\times P(H_2)\times P(H_3)\times P(H_4) = (\frac{1}{2})^4\)</span>.</p>
+</div>
+<div class="section" id="bayes-theorem">
+<h2>Bayes Theorem<a class="headerlink" href="#bayes-theorem" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bayes-theorem-intuition">
+<h3>Bayes Theorem Intuition<a class="headerlink" href="#bayes-theorem-intuition" title="Permalink to this headline">¶</a></h3>
+<p>Suppose 1% of the population uses drugs. 98% of drug users test positive on a drug test and 2% of non-users test positive. What is the probability that a person testing positive for a drug test has used drugs?</p>
+<p><img alt="" src="_images/BayesTreeSmall.PNG" /></p>
+<p>Using the above tree diagram and the definition of conditional probability we calculate:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P(\text{User}|\text{Positive}) &amp;= \frac{P(\text{Positive} \cap \text{User})}{P(\text{Positive})} \\
+&amp;= \frac{P(\text{Positive} \cap \text{User})}{P(\text{Positive} \cap \text{Not User}) + (\text{Positive} \cap \text{User})} \\
+&amp;= \frac{P(\text{Positive}|\text{User}) \times P(\text{User})}{P(\text{Positive}|\text{User}) \times P(\text{User})+P(\text{Positive}|\text{Not User}) \times P(\text{Not User})} \\
+&amp;= \frac{.0099}{.0099+.0099} = \frac{1}{2}
+\end{align*}
+\end{split}\]</div>
+<p>Let’s explain these steps in more detail.</p>
+</div>
+<div class="section" id="law-of-total-probability">
+<h3>Law of Total Probability<a class="headerlink" href="#law-of-total-probability" title="Permalink to this headline">¶</a></h3>
+<p>In the example above we use the following identity:</p>
+<div class="math notranslate nohighlight">
+\[P(\text{Positive}) = P(\text{Positive} \cap \text{Not User}) + (\text{Positive} \cap \text{User})\]</div>
+<p>This identity works because:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+A &amp;= A \cap S \text{, } S \text{ is the sample space} \\
+&amp;= A \cap (B \cup B^C) \text{ because } S = B \cup B^C \\
+&amp;= (A \cap B) \cup (A \cap B^C) \text{ via the distributive property} \\
+&amp;\implies P(A) = P((A \cap B) \cup (A \cap B^C))  \\
+&amp;= P(A \cap B) + P(A \cap B^C) \text{ because disjoint sets} \\
+\end{align*}
+\end{split}\]</div>
+<p>There is a more general formulation of this known as the <strong>law of total probability</strong>:</p>
+<hr class="docutils" />
+<p>Events <span class="math notranslate nohighlight">\(A_1,A_2,...,A_n\)</span> are said to be a <strong>partition</strong> of the sample space <span class="math notranslate nohighlight">\(S\)</span> if <span class="math notranslate nohighlight">\(A_1 \cup A_2 \cup... \cup A_n=S\)</span> and if for all <span class="math notranslate nohighlight">\(i,j: \ A_i \cap A_j = \emptyset\)</span>. This just means that the sets <span class="math notranslate nohighlight">\(A_1,A_2,...,A_n\)</span> cover the whole set and there is no overlap between the sets.</p>
+<p>If sets <span class="math notranslate nohighlight">\(A_1,A_2,...,A_n\)</span> partition <span class="math notranslate nohighlight">\(S\)</span> then for any event <span class="math notranslate nohighlight">\(E\)</span> we have <strong>the law of total probability</strong>:
+$<span class="math notranslate nohighlight">\(P(E) = P(E \cap (A_1 \cup A_2 \cup ... \cup A_n)) = \\ P(E \cap A_1) + P(E \cap A_2) + ... + P(E \cap A_n) = \\ P(E|A_1) \cdot P(A_1) +...+ P(E|A_n) \cdot P(A_n)\)</span>$</p>
+<hr class="docutils" />
+<p>This visual might be useful:</p>
+<p><img alt="" src="_images/totalprob.PNG" /></p>
+<p>Consider how <span class="math notranslate nohighlight">\(P(E) = P(E \cap (A_1 \cup A_2 \cup ... \cup A_n))\)</span> and then revisit the algebra.</p>
+</div>
+<div class="section" id="bayes-theorem-formula">
+<h3>Bayes Theorem Formula<a class="headerlink" href="#bayes-theorem-formula" title="Permalink to this headline">¶</a></h3>
+<p>For a partition <span class="math notranslate nohighlight">\(A_1,A_2,...,A_n\)</span> of event <span class="math notranslate nohighlight">\(E\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[P(A_k|E) = \frac{P(E|A_k) \cdot P(A_k)}{P(E|A_1) \cdot P(A_1) +...+ P(E|A_n) \cdot P(A_n)}\]</div>
+<p>Returning to our example of drug use, people either are drug users or aren’t. So the drug use partitions people that are tested for drugs.</p>
+<div class="math notranslate nohighlight">
+\[P(\text{User}|\text{Positive}) = \frac{P(\text{Positive}|\text{User}) \cdot P(\text{User})}{P(\text{Positive}|\text{User}) \cdot P(\text{User})+P(\text{Positive}|\text{Not User}) \cdot P(\text{Not User})}\]</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="02-counting.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Counting</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Matthew Caseres<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
