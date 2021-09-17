@@ -53,6 +53,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Counting" href="02-counting.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -89,28 +91,21 @@
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="content.html">
-   Content in Jupyter Book
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   An Introduction to Set Theory
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="markdown.html">
-     Markdown Files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="notebooks.html">
-     Content with notebooks
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-counting.html">
+   Counting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-probability.html">
+   Probability Basics
+  </a>
  </li>
 </ul>
 
@@ -424,7 +419,7 @@ B is a subset of A? True
 <div class="section" id="union">
 <h3>Union<a class="headerlink" href="#union" title="Permalink to this headline">¶</a></h3>
 <p><span class="math notranslate nohighlight">\(A \cup B\)</span> is “<span class="math notranslate nohighlight">\(A\)</span> union <span class="math notranslate nohighlight">\(B\)</span>”. The union of two sets is the set of all elements that are in either set (or in both sets).</p>
-<p><img alt="" src="images/01-sets/AUB.PNG" /></p>
+<p><img alt="" src="_images/AUB.PNG" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
@@ -441,7 +436,7 @@ B is a subset of A? True
 <div class="section" id="intersection">
 <h3>Intersection<a class="headerlink" href="#intersection" title="Permalink to this headline">¶</a></h3>
 <p><span class="math notranslate nohighlight">\(A \cap B\)</span> is “<span class="math notranslate nohighlight">\(A\)</span> intersect <span class="math notranslate nohighlight">\(B\)</span>”. Elements in the intersection must belong to both sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.</p>
-<p><img alt="" src="images/01-sets/AcapB.PNG" /></p>
+<p><img alt="" src="_images/AcapB.PNG" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
@@ -458,7 +453,7 @@ B is a subset of A? True
 <div class="section" id="difference">
 <h3>Difference<a class="headerlink" href="#difference" title="Permalink to this headline">¶</a></h3>
 <p><span class="math notranslate nohighlight">\(A-B\)</span> is the difference of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> and is set of all elements that are in <span class="math notranslate nohighlight">\(A\)</span> but not in <span class="math notranslate nohighlight">\(B\)</span>. It can also be written <span class="math notranslate nohighlight">\(A \backslash B\)</span>.</p>
-<p><img alt="" src="images/01-sets/A-B.PNG" /></p>
+<p><img alt="" src="_images/A-B.PNG" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The complement of set A</span>
@@ -476,7 +471,7 @@ B is a subset of A? True
 <div class="section" id="complement">
 <h3>Complement<a class="headerlink" href="#complement" title="Permalink to this headline">¶</a></h3>
 <p><span class="math notranslate nohighlight">\(A^C\)</span> is “the complement of <span class="math notranslate nohighlight">\(A\)</span>”. The complement of a set is all elements that are not in the set. This is relative to our “universe” of possible elements <span class="math notranslate nohighlight">\(S\)</span>.</p>
-<p><img alt="" src="images/01-sets/AC.PNG" /></p>
+<p><img alt="" src="_images/AC.PNG" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python doesn&#39;t have a &quot;complement&quot; function on sets. You just take the &quot;universal set&quot; S and subtract A from it.</span>
@@ -545,8 +540,8 @@ It is easier to remember these distributive formulas by comparing them to the wa
 <div class="section" id="messy-venn-diagrams">
 <h3>Messy Venn Diagrams<a class="headerlink" href="#messy-venn-diagrams" title="Permalink to this headline">¶</a></h3>
 <p>You can draw a Venn diagram for three sets with three circles. It gets a little complicated. I wouldn’t bother drawing a Venn diagram for 4 sets.
-<img alt="" src="images/01-sets/Venn3.PNG" />
-<img alt="" src="images/01-sets/Venn4.PNG" /></p>
+<img alt="" src="_images/Venn3.PNG" />
+<img alt="" src="_images/Venn4.PNG" /></p>
 </div>
 </div>
 </div>
@@ -580,6 +575,24 @@ It is easier to remember these distributive formulas by comparing them to the wa
 
 <div class='prev-next-bottom'>
     
+    <div id="prev">
+        <a class="left-prev" href="intro.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Welcome to your Jupyter Book</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="02-counting.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Counting</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         
@@ -589,7 +602,7 @@ It is easier to remember these distributive formulas by comparing them to the wa
     <div class="container">
       <p>
         
-          By Open Source Actuaries<br/>
+          By Matthew Caseres<br/>
         
             &copy; Copyright 2021.<br/>
       </p>

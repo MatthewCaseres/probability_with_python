@@ -53,6 +53,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Probability Basics" href="03-probability.html" />
+    <link rel="prev" title="An Introduction to Set Theory" href="01-sets.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -89,28 +91,21 @@
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="content.html">
-   Content in Jupyter Book
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-sets.html">
+   An Introduction to Set Theory
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="markdown.html">
-     Markdown Files
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="notebooks.html">
-     Content with notebooks
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Counting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-probability.html">
+   Probability Basics
+  </a>
  </li>
 </ul>
 
@@ -417,7 +412,7 @@ n(A) + n(B) + n(C) - n(A \cap B)-n(B \cap C)-n(C \cap A) + n(A \cap B \cap C)
 </ul>
 <p>How many different shirt/hat combinations can I wear?</p>
 <p>We can make a <strong>tree diagram</strong> to find that there are 6 combinations.</p>
-<p><img alt="" src="images/02-counting/Tree.PNG" /></p>
+<p><img alt="" src="_images/Tree.PNG" /></p>
 </div>
 <div class="section" id="cartesian-product">
 <h3>Cartesian product<a class="headerlink" href="#cartesian-product" title="Permalink to this headline">¶</a></h3>
@@ -464,7 +459,7 @@ The combinations are:
 <div class="section" id="permutations">
 <h2>Permutations<a class="headerlink" href="#permutations" title="Permalink to this headline">¶</a></h2>
 <p>Permutations rearrange elements of a set into ordered outcomes. How many ways can we order the elements of the set <span class="math notranslate nohighlight">\(A = \{1,2,3\}\)</span>?  Let’s draw a tree diagram.</p>
-<p><img alt="" src="images/02-counting/permute3large.PNG" /></p>
+<p><img alt="" src="_images/permute3large.PNG" /></p>
 <p>There are three options for our first selection, two options for our second selection, and one option for our third selection. The multiplication principle gives us 6 permutations of the set <span class="math notranslate nohighlight">\(\{1,2,3\}\)</span>. Generally if <span class="math notranslate nohighlight">\(n(A) = m\)</span> there are <span class="math notranslate nohighlight">\(m \times (m-1) \times ... \times 2 \times 1 = m!\)</span> permutations of the set <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p>Sometimes permutations are more obvious than others. The possible outcomes in a three person race are obviously a permutation because we are ordering a set. But order isn’t always involved. How many ways can I give three candy bars to my three friends? I have <span class="math notranslate nohighlight">\(3\)</span> options for the first candy bar, <span class="math notranslate nohighlight">\(2\)</span> options for the second, and <span class="math notranslate nohighlight">\(1\)</span> option for the third. If I gave away all the candy bars at the same time there is no sense of “ordering” but still this is a permutation.</p>
 <div class="cell docutils container">
@@ -508,7 +503,7 @@ The permutations of [1,2,3] are:
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1693</span><span class="o">/</span><span class="mf">223144171.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2409</span><span class="o">/</span><span class="mf">223144171.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">     </span><span class="mi">17</span> 
 <span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="c1"># We can write our own function too.</span>
 <span class="ne">---&gt; </span><span class="mi">19</span> <span class="k">def</span> <span class="nf">generatePermutations</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
@@ -546,7 +541,7 @@ The permutations of [1,2,3] are:
 <div class="section" id="combinations">
 <h2>Combinations<a class="headerlink" href="#combinations" title="Permalink to this headline">¶</a></h2>
 <p>How many ways can I pick <span class="math notranslate nohighlight">\(2\)</span> numbers from the set <span class="math notranslate nohighlight">\(\{1,2,3\}\)</span>? We have 3 options for the first person, 2 options for the second person, so the answer is <span class="math notranslate nohighlight">\(6\)</span>? <strong>Wrong</strong>, because this assumes that order is important. The order is not important so the pairs <span class="math notranslate nohighlight">\((1,2)\)</span> and <span class="math notranslate nohighlight">\((2,1)\)</span> are the same. This changes our answer to <span class="math notranslate nohighlight">\(3\)</span>.</p>
-<p><img alt="" src="images/02-counting/P(3,2)vsC(3,2).PNG" /></p>
+<p><img alt="" src="_images/P(3,2)vsC(3,2).PNG" /></p>
 <p>The difference between permutations and combinations is that combinations don’t have an order. So there are <span class="math notranslate nohighlight">\(2\)</span> permutations for every combination in the previous example. If we chose <span class="math notranslate nohighlight">\(3\)</span> numbers there are <span class="math notranslate nohighlight">\(3! = 6\)</span> permutations and <span class="math notranslate nohighlight">\(1\)</span> combination. In general we see that <span class="math notranslate nohighlight">\(P(n,k) = C(n,k) \cdot k!\)</span>. Solving for <span class="math notranslate nohighlight">\(C(n,k)\)</span> we get:</p>
 <div class="math notranslate nohighlight">
 \[C(n,k) = \frac{P(n,k)}{k!} = \frac{n!}{k!(n-k)!}\]</div>
@@ -622,6 +617,24 @@ The permutations of [1,2,3] are:
 
 <div class='prev-next-bottom'>
     
+    <div id="prev">
+        <a class="left-prev" href="01-sets.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">An Introduction to Set Theory</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="03-probability.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Probability Basics</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         
@@ -631,7 +644,7 @@ The permutations of [1,2,3] are:
     <div class="container">
       <p>
         
-          By Open Source Actuaries<br/>
+          By Matthew Caseres<br/>
         
             &copy; Copyright 2021.<br/>
       </p>
