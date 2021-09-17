@@ -1,0 +1,638 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>An Introduction to Set Theory &#8212; Probability with Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Counting" href="02-counting.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   An Introduction to Set Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-counting.html">
+   Counting
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="content.html">
+   Content in Jupyter Book
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="markdown.html">
+     Markdown Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/01-sets.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/matthewcaseres/Probability with Python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/matthewcaseres/Probability with Python/issues/new?title=Issue%20on%20page%20%2F01-sets.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/matthewcaseres/Probability with Python/main?urlpath=tree/docs/01-sets.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sets-and-elements">
+   Sets and elements
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#set-builder-notation">
+     Set-builder notation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-equality-and-subsets">
+   Set equality and subsets
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#equality">
+     Equality
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#subsets">
+     Subsets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#venn-diagrams-and-set-operations">
+   Venn Diagrams and Set Operations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#venn-diagrams">
+     Venn Diagrams
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#union">
+     Union
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intersection">
+     Intersection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#difference">
+     Difference
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#complement">
+     Complement
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sample-space-and-empty-set">
+   Sample Space and Empty Set
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#de-morgan-s-laws">
+   De Morgan’s Laws
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#or-more-sets">
+   3 or More Sets
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#associativity">
+     Associativity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#distributive-property">
+     Distributive Property
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#messy-venn-diagrams">
+     Messy Venn Diagrams
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="an-introduction-to-set-theory">
+<h1>An Introduction to Set Theory<a class="headerlink" href="#an-introduction-to-set-theory" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sets-and-elements">
+<h2>Sets and elements<a class="headerlink" href="#sets-and-elements" title="Permalink to this headline">¶</a></h2>
+<p>Sets are collections of objects. In math we wrap the set in curly braces and separate elements with commas, here is a set with three numbers <span class="math notranslate nohighlight">\(\{1,2,4\}\)</span>. We often name sets with a capital letter like <span class="math notranslate nohighlight">\(A=\{1,2,4\}\)</span>.</p>
+<p>Things in the set are called <strong>elements</strong> of the set. The symbol <span class="math notranslate nohighlight">\(\in\)</span> means “is an element of the set”. So <span class="math notranslate nohighlight">\(1 \in \{1,2,4\}\)</span>. We put a slash through the symbol if it isn’t an element of the set, so <span class="math notranslate nohighlight">\(3 \not\in \{1,2,4\}\)</span>. Let’s see how this works in Python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a set A = {1,2}</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">}</span>
+<span class="c1"># The strings are formatted using &quot;f-strings&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Our set is </span><span class="si">{</span><span class="n">A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;1 is in A? </span><span class="si">{</span><span class="mi">1</span> <span class="ow">in</span> <span class="n">A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;3 is in A? </span><span class="si">{</span><span class="mi">3</span> <span class="ow">in</span> <span class="n">A</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># We can also construct sets from other &quot;iterables&quot; like lists using the set() function</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Our set is {1, 2}
+1 is in A? True
+3 is in A? False
+{1, 2}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="set-builder-notation">
+<h3>Set-builder notation<a class="headerlink" href="#set-builder-notation" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes we want to specify an infinite set like the even numbers. We might write this as <span class="math notranslate nohighlight">\(\{2,4,6,8,...\}\)</span> and most people will understand. <strong>Set-builder notation</strong> writes it as <span class="math notranslate nohighlight">\(\{x | x \text{ is   an   even number}\}\)</span>. This is pronounced “the set of x where x is an even number”.</p>
+<p>We could say <span class="math notranslate nohighlight">\(\{x|x \text{ is a solution to } x^3 - 5x^2 - 2x + 10 = 0\}\)</span> if we are having trouble finding the solutions of <span class="math notranslate nohighlight">\(x^3 - 5x^2 - 2x + 10 = 0\)</span>. The solutions are <span class="math notranslate nohighlight">\(\{-\sqrt{2},\sqrt{2},5\}\)</span>, so</p>
+<div class="math notranslate nohighlight">
+\[\{-\sqrt{2},\sqrt{2},5\} =\{x|x \text{ is a solution to } x^3 - 5x^2 - 2x + 10 = 0\}\]</div>
+<p>But what does it mean for sets to be equal?</p>
+</div>
+</div>
+<div class="section" id="set-equality-and-subsets">
+<h2>Set equality and subsets<a class="headerlink" href="#set-equality-and-subsets" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="equality">
+<h3>Equality<a class="headerlink" href="#equality" title="Permalink to this headline">¶</a></h3>
+<p>Sets are equal when they have the same elements, <strong>order doesn’t matter</strong>.
+$<span class="math notranslate nohighlight">\(\{1,2\} = \{2,1\}\)</span><span class="math notranslate nohighlight">\(
+Also \)</span>{1,1,2} = {1,2}$, but since duplicate elements are redundant we say that <strong>sets don’t have duplicate elements</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">}</span> <span class="o">==</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">}</span> <span class="o">==</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="subsets">
+<h3>Subsets<a class="headerlink" href="#subsets" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(A \subseteq B\)</span> is pronounced “A is a <strong>subset</strong> of B” and it means that everything in A is also in B. For example <span class="math notranslate nohighlight">\(\{1,2\} \subseteq \{1,2,3\}\)</span>. Sets are considered subsets of themselves so <span class="math notranslate nohighlight">\(\{1,2\} \subseteq \{1,2\}\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\{1,2,3\} \supseteq \{1,2\}\)</span> is pronounced “<span class="math notranslate nohighlight">\(B\)</span> is a <strong>superset</strong> of <span class="math notranslate nohighlight">\(A\)</span>”.</p>
+<p>If sets are subsets of eachother, they are equal. More formally, if <span class="math notranslate nohighlight">\(A \subseteq B\)</span> and <span class="math notranslate nohighlight">\(B \subseteq A\)</span> then <span class="math notranslate nohighlight">\(A = B\)</span>. Consider why this is true. This technique is commonly used in proofs of set equality.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">}</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A is a subset of B? </span><span class="si">{</span><span class="n">A</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">B</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;B is a subset of A? </span><span class="si">{</span><span class="n">B</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;B is a subset of A? </span><span class="si">{</span><span class="n">B</span><span class="o">.</span><span class="n">issuperset</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A is a subset of B? True
+B is a subset of A? False
+B is a subset of A? True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="venn-diagrams-and-set-operations">
+<h2>Venn Diagrams and Set Operations<a class="headerlink" href="#venn-diagrams-and-set-operations" title="Permalink to this headline">¶</a></h2>
+<p>Let’s define some sets before we talk about how to visualize them with <strong>venn diagrams</strong> and combine them with <strong>set operations</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">}</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">}</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="venn-diagrams">
+<h3>Venn Diagrams<a class="headerlink" href="#venn-diagrams" title="Permalink to this headline">¶</a></h3>
+<p>In a Venn Diagram each set is represented by a circle. The set <span class="math notranslate nohighlight">\(S\)</span> is represented by a black box, think of it as the universe containing all things.</p>
+<p><img alt="" src="_images/Venn.png" /></p>
+</div>
+<div class="section" id="union">
+<h3>Union<a class="headerlink" href="#union" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(A \cup B\)</span> is “<span class="math notranslate nohighlight">\(A\)</span> union <span class="math notranslate nohighlight">\(B\)</span>”. The union of two sets is the set of all elements that are in either set (or in both sets).</p>
+<p><img alt="" src="_images/AUB.PNG" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1, 2, 3, 4, 5, 7}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="intersection">
+<h3>Intersection<a class="headerlink" href="#intersection" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(A \cap B\)</span> is “<span class="math notranslate nohighlight">\(A\)</span> intersect <span class="math notranslate nohighlight">\(B\)</span>”. Elements in the intersection must belong to both sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p><img alt="" src="_images/AcapB.PNG" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{3, 5}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="difference">
+<h3>Difference<a class="headerlink" href="#difference" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(A-B\)</span> is the difference of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> and is set of all elements that are in <span class="math notranslate nohighlight">\(A\)</span> but not in <span class="math notranslate nohighlight">\(B\)</span>. It can also be written <span class="math notranslate nohighlight">\(A \backslash B\)</span>.</p>
+<p><img alt="" src="_images/A-B.PNG" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The complement of set A</span>
+<span class="n">A</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1, 7}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="complement">
+<h3>Complement<a class="headerlink" href="#complement" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(A^C\)</span> is “the complement of <span class="math notranslate nohighlight">\(A\)</span>”. The complement of a set is all elements that are not in the set. This is relative to our “universe” of possible elements <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p><img alt="" src="_images/AC.PNG" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python doesn&#39;t have a &quot;complement&quot; function on sets. You just take the &quot;universal set&quot; S and subtract A from it.</span>
+<span class="n">S</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{2, 4, 6, 8, 9, 10}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sample-space-and-empty-set">
+<h2>Sample Space and Empty Set<a class="headerlink" href="#sample-space-and-empty-set" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>sample space</strong> <span class="math notranslate nohighlight">\(S\)</span> is the set of all possible elements. In probability there are different outcomes to experiments, and the sample space typically represents all possible outcomes. So when flipping coins the sample space is <span class="math notranslate nohighlight">\(\{H,T\}\)</span>. There are some identities for the sample space.</p>
+<div class="math notranslate nohighlight">
+\[A \cup S = S\]</div>
+<div class="math notranslate nohighlight">
+\[A \cap S = A\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">S</span><span class="si">}</span><span class="s2"> == </span><span class="si">{</span><span class="n">A</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">A</span><span class="si">}</span><span class="s2"> == </span><span class="si">{</span><span class="n">A</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1, 2, 3, 4, 5, 6, 7, 8, 9, 10} == {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+{1, 3, 5, 7} == {1, 3, 5, 7}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="de-morgan-s-laws">
+<h2>De Morgan’s Laws<a class="headerlink" href="#de-morgan-s-laws" title="Permalink to this headline">¶</a></h2>
+<p>De Morgan’s laws are formulas for the complement of a union or intersection of sets.
+$<span class="math notranslate nohighlight">\((A \cap B)^C = A^C \cup B^C \\
+(A \cup B)^C = A^C \cap B^C\)</span>$</p>
+<p>One way of memorizing these formulas is that you bring the complement inside the parentheses to both sets and flip the union or intersection upside down.</p>
+<p>Let’s see if these laws make any sense. Let <span class="math notranslate nohighlight">\(T\)</span> be the set of tennis players and <span class="math notranslate nohighlight">\(H\)</span> be the set of hockey players. <span class="math notranslate nohighlight">\((T \cap H)^C\)</span> is the set of people that don’t play both tennis and hockey. <span class="math notranslate nohighlight">\(T^C \cup H^C\)</span> is people that don’t play tennis or they don’t play hockey. If I don’t play both sports then I either don’t play tennis or I don’t play hockey, so <span class="math notranslate nohighlight">\((T \cap H)^C \subseteq T^C \cup H^C\)</span>. If I don’t play tennis or I don’t play hockey then it is true that I don’t play both sports, so <span class="math notranslate nohighlight">\(T^C \cup H^C \subseteq (T \cap H)^C\)</span>. This means that the sets are equal, ponder this for some time. A similar argument can be made for the complement of the union. If this is not convincing spend some time with a Venn diagram and see if you can get it to make sense.</p>
+</div>
+<div class="section" id="or-more-sets">
+<h2>3 or More Sets<a class="headerlink" href="#or-more-sets" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="associativity">
+<h3>Associativity<a class="headerlink" href="#associativity" title="Permalink to this headline">¶</a></h3>
+<p>You can take the intersection or union of more than two sets.
+$<span class="math notranslate nohighlight">\(\{1,2\} \cap \{2,3\} \cap \{3,4\} = \emptyset\)</span>$
+There are no elements in the intersection of these three sets because no number appears in all three sets, so this is the empty set.</p>
+<p>Intersections are associative, meaning it doesn’t matter what order you take them in. This is also true of unions.
+$<span class="math notranslate nohighlight">\((A \cap B) \cap C= A \cap (B \cap C)\)</span><span class="math notranslate nohighlight">\( 
+\)</span><span class="math notranslate nohighlight">\((A \cup B) \cup C= A \cup (B \cup C)\)</span>$</p>
+</div>
+<div class="section" id="distributive-property">
+<h3>Distributive Property<a class="headerlink" href="#distributive-property" title="Permalink to this headline">¶</a></h3>
+<p>If you mix together unions and intersections in an expression it isn’t associative.
+$<span class="math notranslate nohighlight">\(A \cap (B \cup C) \not= (A \cap B) \cup C\)</span><span class="math notranslate nohighlight">\( 
+But the distributive property is true of intersections and unions. 
+\)</span><span class="math notranslate nohighlight">\(A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \\
+ A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\)</span><span class="math notranslate nohighlight">\( 
+It is easier to remember these distributive formulas by comparing them to the way multiplication distributes over addition. \)</span>a(b+c)=ab+ac$. Just pretend that the multiplication is an intersection and the addition is a union.</p>
+</div>
+<div class="section" id="messy-venn-diagrams">
+<h3>Messy Venn Diagrams<a class="headerlink" href="#messy-venn-diagrams" title="Permalink to this headline">¶</a></h3>
+<p>You can draw a Venn diagram for three sets with three circles. It gets a little complicated. I wouldn’t bother drawing a Venn diagram for 4 sets.
+<img alt="" src="_images/Venn3.PNG" />
+<img alt="" src="_images/Venn4.PNG" /></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="intro.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Welcome to your Jupyter Book</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="02-counting.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Counting</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Matthew Caseres<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
