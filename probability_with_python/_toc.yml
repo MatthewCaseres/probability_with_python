@@ -6,7 +6,4 @@ root: intro
 sections:
   - file: 01-sets
   - file: 02-counting
-  - file: content
-    sections:
-      - file: markdown
-      - file: notebooks
+  - file: 03-probability
