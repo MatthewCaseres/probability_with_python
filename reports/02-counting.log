@@ -47,7 +47,7 @@ def generatePermutations(nums: list[int]) -> list[list[int]]:
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mTypeError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1630/223144171.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_2339/223144171.py[0m in [0;36m<module>[0;34m[0m
 [1;32m     17[0m [0;34m[0m[0m
 [1;32m     18[0m [0;31m# We can write our own function too.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
 [0;32m---> 19[0;31m [0;32mdef[0m [0mgeneratePermutations[0m[0;34m([0m[0mnums[0m[0;34m:[0m [0mlist[0m[0;34m[[0m[0mint[0m[0;34m][0m[0;34m)[0m [0;34m->[0m [0mlist[0m[0;34m[[0m[0mlist[0m[0;34m[[0m[0mint[0m[0;34m][0m[0;34m][0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
