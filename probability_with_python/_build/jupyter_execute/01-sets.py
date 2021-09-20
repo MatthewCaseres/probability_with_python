@@ -37,7 +37,9 @@ print(set([1,2]))
 # ### Equality
 # 
 # Sets are equal when they have the same elements, **order doesn't matter**. 
+# 
 # $$\{1,2\} = \{2,1\}$$
+# 
 # Also $\{1,1,2\} = \{1,2\}$, but since duplicate elements are redundant we say that **sets don't have duplicate elements**.
 
 # In[2]:
@@ -150,6 +152,7 @@ print(f"{A} == {A.intersection(S)}")
 # ## De Morgan's Laws
 # 
 # De Morgan's laws are formulas for the complement of a union or intersection of sets.
+# 
 # $$(A \cap B)^C = A^C \cup B^C \\
 # (A \cup B)^C = A^C \cap B^C$$
 # 
@@ -160,23 +163,32 @@ print(f"{A} == {A.intersection(S)}")
 # ## 3 or More Sets
 # 
 # ### Associativity
-# You can take the intersection or union of more than two sets. 
+# You can take the intersection or union of more than two sets.
+# 
 # $$\{1,2\} \cap \{2,3\} \cap \{3,4\} = \emptyset$$ 
+# 
 # There are no elements in the intersection of these three sets because no number appears in all three sets, so this is the empty set. 
 # 
 # Intersections are associative, meaning it doesn't matter what order you take them in. This is also true of unions.
+# 
 # $$(A \cap B) \cap C= A \cap (B \cap C)$$ 
 # $$(A \cup B) \cup C= A \cup (B \cup C)$$
 # 
 # ### Distributive Property
+# 
 # If you mix together unions and intersections in an expression it isn't associative.
+# 
 # $$A \cap (B \cup C) \not= (A \cap B) \cup C$$ 
+# 
 # But the distributive property is true of intersections and unions. 
+# 
 # $$A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \\
 #  A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$$ 
+# 
 # It is easier to remember these distributive formulas by comparing them to the way multiplication distributes over addition. $a(b+c)=ab+ac$. Just pretend that the multiplication is an intersection and the addition is a union.
 # 
 # ### Messy Venn Diagrams
 # You can draw a Venn diagram for three sets with three circles. It gets a little complicated. I wouldn't bother drawing a Venn diagram for 4 sets.
+# 
 # ![](./images/01-sets/Venn3.PNG)
 # ![](./images/01-sets/Venn4.PNG)

@@ -73,9 +73,11 @@ printResults(*runTrials(1_000_000))
 # ### Events
 # 
 # **Events** represent a set of possible outcomes from an experiment. When we flip two coins there is an event for flipping two heads, $E_\text{both heads}=\{HH\}$. There is also an event for not flipping two heads $E_\text{not both heads}=\{HT,TH,TT\}$. An event is a subset of the sample space. It may represent a single outcome of our experiment, or it may represent several of the possible outcomes:
+# 
 # $$E \subseteq S$$
 # 
 # We can rewrite our formula for probabilities when all outcomes of an experiment are equally likely using $n(E)$ for the number of selected outcomes.
+# 
 # $$\frac{\text{Number of Selected Outcomes}}{\text{Number of Total Possible Outcomes}} = \frac{n(E)}{n(S)}$$
 # 
 # ### Example
@@ -85,21 +87,27 @@ printResults(*runTrials(1_000_000))
 # The experiment is rolling two dice.
 # 
 # The sample space is the set of all possible ordered combinations of two dice. We can define it in set builder notation: 
+# 
 # $$S=\{(a,b)|a,b \in \{1,2,3,4,5,6\}\}$$
+# 
 # $n(S) = 36$ because there are $6$ possible outcomes for each die and we use the multiplication principle.
 # 
 # The event contains the elements of the sample space that sum to 4. 
+# 
 # $$E = \{(1,3),(3,1),(2,2)\}$$
 # 
 # The probability is 
+# 
 # $$\frac{\text{Number of Selected Outcomes}}{\text{Number of Total Possible Outcomes}} = \frac{n(E)}{n(S)} = \frac{3}{36}=\frac{1}{12}$$
 
 # ## Probability Functions
 # 
 # A probability function $P$ calculates the probability of an event. When we flip a coin twice the probability of getting a head and a tail is:
+# 
 # $$P(\{HT, TH\})=.5$$
 # 
 # For experiments where all outcomes are equally likely:
+# 
 # $$P(E) = \frac{n(E)}{n(S)}$$
 # 
 # A probability is between $0$ and $1$ because an event can't happen less than $0\%$ of the time or more than $100\%$ of the time. More formally, $P$ is a function that takes an event as input and gives a number between $0$ and $1$ as output. In notation:
@@ -112,12 +120,15 @@ printResults(*runTrials(1_000_000))
 # There are three fundamental assumptions (called axioms) about probability functions from which our other laws are derived.
 # 
 # **First Axiom** - For an event $E$, and probability function $P$:
+# 
 # $$P(E) \geq 0$$
 # 
 # **Second Axiom** - For a sample space $S$:
+# 
 # $$P(S)=1$$
 # 
 # **Third Axiom** - If $E_1, E_2, ...E_n$ are **mutually exclusive** events:
+# 
 # $$P(\bigcup\limits_{i=1}^{\infty} E_{i})=P(E_1 \cup E_2 \cup...\cup En \cup...) = P(E1)+P(E2)+...+P(En)+...$$
 # 
 # Recall that mutually exclusive means that sets have empty intersections. We have already seen that $n(E_1 \cup E_2) = n(E_1) + n(E_2)$ for mutually exclusive events. Our third axiom says something similar for the probability of mutually exclusive events, $P(E_1 \cup E_2) = P(E_1) + P(E_2)$
@@ -161,7 +172,9 @@ printResults(*runTrials(1_000_000))
 # **Example: Coin Flipping and Axioms**
 # 
 # If we flip a coin, heads and tails are mutually exclusive events. 
+# 
 # $$P(\{H\} \cup \{T\}) = P(\{H\})+P(\{T\}) = .5 + .5 = 1$$ 
+# 
 # We know that $P(\{H\}), P(\{T\})=.5$ from our formula for equally likely events at the beginning of the chapter. Note that $S = \{H\} \cup \{T\}$ so this example also illustrates that $P(S)=1$.
 # 
 # ***
@@ -197,7 +210,9 @@ printResults(*runTrials(1_000_000))
 # ### Formulas
 # 
 # The probability of event $A$ given that event $B$ has occurred is denoted $P(A|B)$ and pronounced "the probability of A given B". 
-# The general formula for this is $$P(A|B)=\frac{P(A \cap B)}{P(B)}$$
+# The general formula for this is 
+# 
+# $$P(A|B)=\frac{P(A \cap B)}{P(B)}$$
 # 
 # We can calculate $P(A \cap B)$ by rearranging the formula. 
 # 
@@ -206,6 +221,7 @@ printResults(*runTrials(1_000_000))
 # Conceptuaize this as an event B happening with probability $P(B)$ and then an event $A$ happening with probability $P(A|B)$, so $P(A \cap B) = P(B) \cdot P(A|B)$
 # 
 # For experiments where all outcomes have equal probabilities $P(A|B)$ can be calculated with set sizes. Here is a derivation:
+# 
 #  $$P(A|B)=\frac{n(A \cap B)/n(S)}{n(B)/n(S)}=\frac{n(A \cap B)}{n(B)}$$
 
 # ## Independence
@@ -273,7 +289,9 @@ printResults(*runTrials(1_000_000))
 # Events $A_1,A_2,...,A_n$ are said to be a **partition** of the sample space $S$ if $A_1 \cup A_2 \cup... \cup A_n=S$ and if for all $i,j: \ A_i \cap A_j = \emptyset$. This just means that the sets $A_1,A_2,...,A_n$ cover the whole set and there is no overlap between the sets.
 # 
 # If sets $A_1,A_2,...,A_n$ partition $S$ then for any event $E$ we have **the law of total probability**:
+# 
 # $$P(E) = P(E \cap (A_1 \cup A_2 \cup ... \cup A_n)) = \\ P(E \cap A_1) + P(E \cap A_2) + ... + P(E \cap A_n) = \\ P(E|A_1) \cdot P(A_1) +...+ P(E|A_n) \cdot P(A_n)$$
+# 
 # ***
 # 
 # This visual might be useful:

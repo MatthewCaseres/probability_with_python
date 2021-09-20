@@ -1,16 +1,15 @@
-# Welcome to your Jupyter Book
+# About the book
 
-This is a small sample book to give you a feel for how book content is
-structured.
+This is a book about probability. It is free in every way possible. There is no copyright associated with this work, it belongs in the public domain.
 
-:::{note}
-Here is a note!
-:::
+Some of the content on statistics comes from Online Statistics Education: A Multimedia Course of Study (http://onlinestatbook.com/), which is also public domain.
 
-And here is a code block:
+The content is written by the contributors, if you submit a pull request feel free to add your name here -
 
-```
-e = mc^2
-```
+## Contributors
 
-Check out the content pages bundled with this sample book to see more.
+- [Matthew Caseres](https://github.com/MatthewCaseres)
+
+## Contributing
+
+This book is written **collaboratively** on GitHub. If you have an issue with anything in the book, please open an issue on GitHub. Otherwise, feel free to submit a pull request.

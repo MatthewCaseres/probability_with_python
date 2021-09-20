@@ -6,6 +6,7 @@
 # ## Size of a set
 # 
 # The set $A = \{5,6\}$ has two elements. The is notation for this is $n(A) = 2$. $n$ is a function that takes a set and outputs the number of elements in it: 
+# 
 # $$n: \text{Sets} \to \text{Whole Numbers}$$
 # 
 # Let the sample space be $S = \{1,2,3,4,5,6\}$. Since $A=\{5,6\}$, $A^C= \{1,2,3,4\}$ and $n(A^C)=4$. There is a formula for the size of the complement.
@@ -132,9 +133,9 @@ len(A.union(B)) == len(A) + len(B) - len(A.intersection(B))
 
 # Find all sequences of coin flips of length n. We use a list comprehension to generate the new sequences.
 def coin_flips(n):
-  sequences = [[]]
+  sequences = ['']
   for i in range(n):
-    sequences = [seq + ['H'] for seq in sequences] + [seq + ['T'] for seq in sequences]
+    sequences = [seq + 'H' for seq in sequences] + [seq + 'T' for seq in sequences]
   return sequences
 
 print(f"There are {len(coin_flips(4))} sequences")

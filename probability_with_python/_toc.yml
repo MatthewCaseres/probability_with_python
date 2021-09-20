@@ -7,3 +7,6 @@ sections:
   - file: 01-sets
   - file: 02-counting
   - file: 03-probability
+  - file: 04-random-variables
+  - file: 05-discretedistributions
+  - file: 06-continuousdistributions

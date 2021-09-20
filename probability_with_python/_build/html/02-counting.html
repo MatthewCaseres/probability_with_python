@@ -107,6 +107,21 @@
    Probability Basics
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04-random-variables.html">
+   Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05-discretedistributions.html">
+   Common Discrete Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06-continuousdistributions.html">
+   Continuous Distributions
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -304,8 +319,9 @@
 <h1>Counting<a class="headerlink" href="#counting" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="size-of-a-set">
 <h2>Size of a set<a class="headerlink" href="#size-of-a-set" title="Permalink to this headline">¶</a></h2>
-<p>The set <span class="math notranslate nohighlight">\(A = \{5,6\}\)</span> has two elements. The is notation for this is <span class="math notranslate nohighlight">\(n(A) = 2\)</span>. <span class="math notranslate nohighlight">\(n\)</span> is a function that takes a set and outputs the number of elements in it:
-$<span class="math notranslate nohighlight">\(n: \text{Sets} \to \text{Whole Numbers}\)</span>$</p>
+<p>The set <span class="math notranslate nohighlight">\(A = \{5,6\}\)</span> has two elements. The is notation for this is <span class="math notranslate nohighlight">\(n(A) = 2\)</span>. <span class="math notranslate nohighlight">\(n\)</span> is a function that takes a set and outputs the number of elements in it:</p>
+<div class="math notranslate nohighlight">
+\[n: \text{Sets} \to \text{Whole Numbers}\]</div>
 <p>Let the sample space be <span class="math notranslate nohighlight">\(S = \{1,2,3,4,5,6\}\)</span>. Since <span class="math notranslate nohighlight">\(A=\{5,6\}\)</span>, <span class="math notranslate nohighlight">\(A^C= \{1,2,3,4\}\)</span> and <span class="math notranslate nohighlight">\(n(A^C)=4\)</span>. There is a formula for the size of the complement.</p>
 <div class="math notranslate nohighlight">
 \[n(A^C) = n(S) - n(A)=6-2=4\]</div>
@@ -435,9 +451,9 @@ n(A) + n(B) + n(C) - n(A \cap B)-n(B \cap C)-n(C \cap A) + n(A \cap B \cap C)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find all sequences of coin flips of length n. We use a list comprehension to generate the new sequences.</span>
 <span class="k">def</span> <span class="nf">coin_flips</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-  <span class="n">sequences</span> <span class="o">=</span> <span class="p">[[]]</span>
+  <span class="n">sequences</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">]</span>
   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">sequences</span> <span class="o">=</span> <span class="p">[</span><span class="n">seq</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">sequences</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">seq</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">sequences</span><span class="p">]</span>
+    <span class="n">sequences</span> <span class="o">=</span> <span class="p">[</span><span class="n">seq</span> <span class="o">+</span> <span class="s1">&#39;H&#39;</span> <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">sequences</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">seq</span> <span class="o">+</span> <span class="s1">&#39;T&#39;</span> <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">sequences</span><span class="p">]</span>
   <span class="k">return</span> <span class="n">sequences</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">coin_flips</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span><span class="si">}</span><span class="s2"> sequences&quot;</span><span class="p">)</span>
@@ -448,7 +464,7 @@ n(A) + n(B) + n(C) - n(A \cap B)-n(B \cap C)-n(C \cap A) + n(A \cap B \cap C)
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 16 sequences
 The combinations are: 
- [[&#39;H&#39;, &#39;H&#39;, &#39;H&#39;, &#39;H&#39;], [&#39;T&#39;, &#39;H&#39;, &#39;H&#39;, &#39;H&#39;], [&#39;H&#39;, &#39;T&#39;, &#39;H&#39;, &#39;H&#39;], [&#39;T&#39;, &#39;T&#39;, &#39;H&#39;, &#39;H&#39;], [&#39;H&#39;, &#39;H&#39;, &#39;T&#39;, &#39;H&#39;], [&#39;T&#39;, &#39;H&#39;, &#39;T&#39;, &#39;H&#39;], [&#39;H&#39;, &#39;T&#39;, &#39;T&#39;, &#39;H&#39;], [&#39;T&#39;, &#39;T&#39;, &#39;T&#39;, &#39;H&#39;], [&#39;H&#39;, &#39;H&#39;, &#39;H&#39;, &#39;T&#39;], [&#39;T&#39;, &#39;H&#39;, &#39;H&#39;, &#39;T&#39;], [&#39;H&#39;, &#39;T&#39;, &#39;H&#39;, &#39;T&#39;], [&#39;T&#39;, &#39;T&#39;, &#39;H&#39;, &#39;T&#39;], [&#39;H&#39;, &#39;H&#39;, &#39;T&#39;, &#39;T&#39;], [&#39;T&#39;, &#39;H&#39;, &#39;T&#39;, &#39;T&#39;], [&#39;H&#39;, &#39;T&#39;, &#39;T&#39;, &#39;T&#39;], [&#39;T&#39;, &#39;T&#39;, &#39;T&#39;, &#39;T&#39;]]
+ [&#39;HHHH&#39;, &#39;THHH&#39;, &#39;HTHH&#39;, &#39;TTHH&#39;, &#39;HHTH&#39;, &#39;THTH&#39;, &#39;HTTH&#39;, &#39;TTTH&#39;, &#39;HHHT&#39;, &#39;THHT&#39;, &#39;HTHT&#39;, &#39;TTHT&#39;, &#39;HHTT&#39;, &#39;THTT&#39;, &#39;HTTT&#39;, &#39;TTTT&#39;]
 </pre></div>
 </div>
 </div>
