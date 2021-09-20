@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Counting" href="02-counting.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+    <link rel="prev" title="About the book" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -73,6 +73,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
@@ -87,7 +91,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Welcome to your Jupyter Book
+   About the book
   </a>
  </li>
 </ul>
@@ -105,6 +109,21 @@
  <li class="toctree-l1">
   <a class="reference internal" href="03-probability.html">
    Probability Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04-random-variables.html">
+   Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05-discretedistributions.html">
+   Common Discrete Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06-continuousdistributions.html">
+   Continuous Distributions
   </a>
  </li>
 </ul>
@@ -356,9 +375,10 @@
 <h2>Set equality and subsets<a class="headerlink" href="#set-equality-and-subsets" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="equality">
 <h3>Equality<a class="headerlink" href="#equality" title="Permalink to this headline">¶</a></h3>
-<p>Sets are equal when they have the same elements, <strong>order doesn’t matter</strong>.
-$<span class="math notranslate nohighlight">\(\{1,2\} = \{2,1\}\)</span><span class="math notranslate nohighlight">\(
-Also \)</span>{1,1,2} = {1,2}$, but since duplicate elements are redundant we say that <strong>sets don’t have duplicate elements</strong>.</p>
+<p>Sets are equal when they have the same elements, <strong>order doesn’t matter</strong>.</p>
+<div class="math notranslate nohighlight">
+\[\{1,2\} = \{2,1\}\]</div>
+<p>Also <span class="math notranslate nohighlight">\(\{1,1,2\} = \{1,2\}\)</span>, but since duplicate elements are redundant we say that <strong>sets don’t have duplicate elements</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">}</span> <span class="o">==</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">})</span>
@@ -511,9 +531,10 @@ B is a subset of A? True
 </div>
 <div class="section" id="de-morgan-s-laws">
 <h2>De Morgan’s Laws<a class="headerlink" href="#de-morgan-s-laws" title="Permalink to this headline">¶</a></h2>
-<p>De Morgan’s laws are formulas for the complement of a union or intersection of sets.
-$<span class="math notranslate nohighlight">\((A \cap B)^C = A^C \cup B^C \\
-(A \cup B)^C = A^C \cap B^C\)</span>$</p>
+<p>De Morgan’s laws are formulas for the complement of a union or intersection of sets.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}(A \cap B)^C = A^C \cup B^C \\
+(A \cup B)^C = A^C \cap B^C\end{split}\]</div>
 <p>One way of memorizing these formulas is that you bring the complement inside the parentheses to both sets and flip the union or intersection upside down.</p>
 <p>Let’s see if these laws make any sense. Let <span class="math notranslate nohighlight">\(T\)</span> be the set of tennis players and <span class="math notranslate nohighlight">\(H\)</span> be the set of hockey players. <span class="math notranslate nohighlight">\((T \cap H)^C\)</span> is the set of people that don’t play both tennis and hockey. <span class="math notranslate nohighlight">\(T^C \cup H^C\)</span> is people that don’t play tennis or they don’t play hockey. If I don’t play both sports then I either don’t play tennis or I don’t play hockey, so <span class="math notranslate nohighlight">\((T \cap H)^C \subseteq T^C \cup H^C\)</span>. If I don’t play tennis or I don’t play hockey then it is true that I don’t play both sports, so <span class="math notranslate nohighlight">\(T^C \cup H^C \subseteq (T \cap H)^C\)</span>. This means that the sets are equal, ponder this for some time. A similar argument can be made for the complement of the union. If this is not convincing spend some time with a Venn diagram and see if you can get it to make sense.</p>
 </div>
@@ -521,26 +542,31 @@ $<span class="math notranslate nohighlight">\((A \cap B)^C = A^C \cup B^C \\
 <h2>3 or More Sets<a class="headerlink" href="#or-more-sets" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="associativity">
 <h3>Associativity<a class="headerlink" href="#associativity" title="Permalink to this headline">¶</a></h3>
-<p>You can take the intersection or union of more than two sets.
-$<span class="math notranslate nohighlight">\(\{1,2\} \cap \{2,3\} \cap \{3,4\} = \emptyset\)</span>$
-There are no elements in the intersection of these three sets because no number appears in all three sets, so this is the empty set.</p>
-<p>Intersections are associative, meaning it doesn’t matter what order you take them in. This is also true of unions.
-$<span class="math notranslate nohighlight">\((A \cap B) \cap C= A \cap (B \cap C)\)</span><span class="math notranslate nohighlight">\( 
-\)</span><span class="math notranslate nohighlight">\((A \cup B) \cup C= A \cup (B \cup C)\)</span>$</p>
+<p>You can take the intersection or union of more than two sets.</p>
+<div class="math notranslate nohighlight">
+\[\{1,2\} \cap \{2,3\} \cap \{3,4\} = \emptyset\]</div>
+<p>There are no elements in the intersection of these three sets because no number appears in all three sets, so this is the empty set.</p>
+<p>Intersections are associative, meaning it doesn’t matter what order you take them in. This is also true of unions.</p>
+<div class="math notranslate nohighlight">
+\[(A \cap B) \cap C= A \cap (B \cap C)\]</div>
+<div class="math notranslate nohighlight">
+\[(A \cup B) \cup C= A \cup (B \cup C)\]</div>
 </div>
 <div class="section" id="distributive-property">
 <h3>Distributive Property<a class="headerlink" href="#distributive-property" title="Permalink to this headline">¶</a></h3>
-<p>If you mix together unions and intersections in an expression it isn’t associative.
-$<span class="math notranslate nohighlight">\(A \cap (B \cup C) \not= (A \cap B) \cup C\)</span><span class="math notranslate nohighlight">\( 
-But the distributive property is true of intersections and unions. 
-\)</span><span class="math notranslate nohighlight">\(A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \\
- A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\)</span><span class="math notranslate nohighlight">\( 
-It is easier to remember these distributive formulas by comparing them to the way multiplication distributes over addition. \)</span>a(b+c)=ab+ac$. Just pretend that the multiplication is an intersection and the addition is a union.</p>
+<p>If you mix together unions and intersections in an expression it isn’t associative.</p>
+<div class="math notranslate nohighlight">
+\[A \cap (B \cup C) \not= (A \cap B) \cup C\]</div>
+<p>But the distributive property is true of intersections and unions.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \\
+ A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\end{split}\]</div>
+<p>It is easier to remember these distributive formulas by comparing them to the way multiplication distributes over addition. <span class="math notranslate nohighlight">\(a(b+c)=ab+ac\)</span>. Just pretend that the multiplication is an intersection and the addition is a union.</p>
 </div>
 <div class="section" id="messy-venn-diagrams">
 <h3>Messy Venn Diagrams<a class="headerlink" href="#messy-venn-diagrams" title="Permalink to this headline">¶</a></h3>
-<p>You can draw a Venn diagram for three sets with three circles. It gets a little complicated. I wouldn’t bother drawing a Venn diagram for 4 sets.
-<img alt="" src="_images/Venn3.PNG" />
+<p>You can draw a Venn diagram for three sets with three circles. It gets a little complicated. I wouldn’t bother drawing a Venn diagram for 4 sets.</p>
+<p><img alt="" src="_images/Venn3.PNG" />
 <img alt="" src="_images/Venn4.PNG" /></p>
 </div>
 </div>
@@ -580,7 +606,7 @@ It is easier to remember these distributive formulas by comparing them to the wa
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Welcome to your Jupyter Book</p>
+                <p class="prevnext-title">About the book</p>
             </div>
         </a>
     </div>
@@ -598,7 +624,7 @@ It is easier to remember these distributive formulas by comparing them to the wa
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -53,6 +53,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Common Discrete Distributions" href="05-discretedistributions.html" />
+    <link rel="prev" title="Probability Basics" href="03-probability.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -71,6 +73,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="_static/logo.png" class="logo" alt="logo">
       
       
@@ -85,11 +91,11 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Welcome to your Jupyter Book
+   About the book
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01-sets.html">
    An Introduction to Set Theory
@@ -103,6 +109,21 @@
  <li class="toctree-l1">
   <a class="reference internal" href="03-probability.html">
    Probability Basics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05-discretedistributions.html">
+   Common Discrete Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06-continuousdistributions.html">
+   Continuous Distributions
   </a>
  </li>
 </ul>
@@ -272,7 +293,7 @@
 <p>Students can get confused about random variables because often the random variable is very simple, like <span class="math notranslate nohighlight">\(y=x\)</span>. The student then begins to overgeneralize and confuse random variables with sample spaces.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">X</span><span class="p">(</span><span class="n">coinFlips</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">X1</span><span class="p">(</span><span class="n">coinFlips</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
   <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  This function takes a string of coin flips and returns the number of heads.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
@@ -282,12 +303,17 @@
       <span class="n">heads</span> <span class="o">+=</span> <span class="mi">1</span>
   <span class="k">return</span> <span class="n">heads</span>
 
-<span class="n">X</span><span class="p">(</span><span class="s2">&quot;HHHTTH&quot;</span><span class="p">)</span>
+<span class="c1"># Or we can do it in one line</span>
+<span class="n">X2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">coinFlips</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">flip</span> <span class="o">==</span> <span class="s2">&quot;H&quot;</span>  <span class="k">for</span> <span class="n">flip</span> <span class="ow">in</span> <span class="n">coinFlips</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Version 1: &quot;</span><span class="p">,</span> <span class="n">X1</span><span class="p">(</span><span class="s2">&quot;HHHTTH&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Version 2: &quot;</span><span class="p">,</span> <span class="n">X2</span><span class="p">(</span><span class="s2">&quot;HHHTTH&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Version 1:  4
+Version 2:  4
 </pre></div>
 </div>
 </div>
@@ -307,8 +333,9 @@
 <h3>Probability Mass Function Definition<a class="headerlink" href="#probability-mass-function-definition" title="Permalink to this headline">¶</a></h3>
 <p>It is common to calculate the probability of a random variable being a value <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(P(X=x)\)</span>. It is so common that we call it a “probability mass function” (abbreviated <strong>PMF</strong>) and give it special notation.</p>
 <hr class="docutils" />
-<p>The probability mass function calculates <span class="math notranslate nohighlight">\(P(X=x)\)</span>. There is a special way to write this, instead of using a capital <span class="math notranslate nohighlight">\(P\)</span> we use a lowercase <span class="math notranslate nohighlight">\(p\)</span> and say that:
-$<span class="math notranslate nohighlight">\(p(x)=P(X = x)\)</span>$</p>
+<p>The probability mass function calculates <span class="math notranslate nohighlight">\(P(X=x)\)</span>. There is a special way to write this, instead of using a capital <span class="math notranslate nohighlight">\(P\)</span> we use a lowercase <span class="math notranslate nohighlight">\(p\)</span> and say that:</p>
+<div class="math notranslate nohighlight">
+\[p(x)=P(X = x)\]</div>
 <p>Some properties of the probability mass function are that the probability of an outcome is between 0 and 1, and that the sum of the probability of all possible outcomes is 1:</p>
 <p>For <span class="math notranslate nohighlight">\(x \in S\)</span></p>
 <ul class="simple">
@@ -339,10 +366,12 @@ $<span class="math notranslate nohighlight">\(p(x)=P(X = x)\)</span>$</p>
 <h2>Cumulative Distribution Functions (CDFs)<a class="headerlink" href="#cumulative-distribution-functions-cdfs" title="Permalink to this headline">¶</a></h2>
 <p>Again we are flipping the coin twice and counting the heads. We can calculate <span class="math notranslate nohighlight">\(P(X \leq 1) = p(0)+p(1) = .25+.5=.75\)</span>. Calculations of this sort are very common, and we call them <strong>cumulative distribution functions (CDFs)</strong>. There is a special notation for this.</p>
 <hr class="docutils" />
-<p>The cumulative distribution function calculates <span class="math notranslate nohighlight">\(P(X \leq x)\)</span>. There is a special way to write this:
-$<span class="math notranslate nohighlight">\(F(x)=P(X \leq x)\)</span>$</p>
-<p>We can calculate the cumulative distribution function by summing the probability mass function:
-$<span class="math notranslate nohighlight">\(F(x_0) = \displaystyle\sum_{x \leq x_0} p(x)\)</span>$</p>
+<p>The cumulative distribution function calculates <span class="math notranslate nohighlight">\(P(X \leq x)\)</span>. There is a special way to write this:</p>
+<div class="math notranslate nohighlight">
+\[F(x)=P(X \leq x)\]</div>
+<p>We can calculate the cumulative distribution function by summing the probability mass function:</p>
+<div class="math notranslate nohighlight">
+\[F(x_0) = \displaystyle\sum_{x \leq x_0} p(x)\]</div>
 <hr class="docutils" />
 <p>We calculate the cumulative distribution function for our coin flipping example, see that the CDF is the cumulative sum of the PDF.</p>
 <table class="colwidths-auto table">
@@ -366,8 +395,10 @@ $<span class="math notranslate nohighlight">\(F(x_0) = \displaystyle\sum_{x \leq
 </tr>
 </tbody>
 </table>
-<p>In the above table we only define the CDF at points <span class="math notranslate nohighlight">\(0,1,2\)</span> but we can also calculate the CDF at <span class="math notranslate nohighlight">\(.5\)</span>. $<span class="math notranslate nohighlight">\(F(.5)=P(X \leq .5) = \displaystyle\sum_{x \leq .5} p(x) = p(0) = .25\)</span>$
-The CDF only changes at values where there are outcomes that happen with some probability. Understand why the graph below looks the way it does.</p>
+<p>In the above table we only define the CDF at points <span class="math notranslate nohighlight">\(0,1,2\)</span> but we can also calculate the CDF at <span class="math notranslate nohighlight">\(.5\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[F(.5)=P(X \leq .5) = \displaystyle\sum_{x \leq .5} p(x) = p(0) = .25\]</div>
+<p>The CDF only changes at values where there are outcomes that happen with some probability. Understand why the graph below looks the way it does.</p>
 <p><img alt="" src="images/04-RV/CDFPlot.PNG" /></p>
 </div>
 <div class="section" id="discrete-vs-continuous-random-variables">
@@ -421,12 +452,30 @@ The CDF only changes at values where there are outcomes that happen with some pr
 
 <div class='prev-next-bottom'>
     
+    <div id="prev">
+        <a class="left-prev" href="03-probability.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Probability Basics</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="05-discretedistributions.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Common Discrete Distributions</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

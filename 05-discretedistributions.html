@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Common Discrete Distributions &#8212; Probability with Python</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Continuous Distributions" href="06-continuousdistributions.html" />
+    <link rel="prev" title="Random Variables" href="04-random-variables.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Probability with Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   About the book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-sets.html">
+   An Introduction to Set Theory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-counting.html">
+   Counting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-probability.html">
+   Probability Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04-random-variables.html">
+   Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Common Discrete Distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06-continuousdistributions.html">
+   Continuous Distributions
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/05-discretedistributions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/matthewcaseres/Probability with Python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/matthewcaseres/Probability with Python/issues/new?title=Issue%20on%20page%20%2F05-discretedistributions.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/matthewcaseres/Probability with Python/main?urlpath=tree/docs/05-discretedistributions.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bernoulli-distribution">
+   Bernoulli Distribution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#binomial-distribution">
+   Binomial Distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statement">
+     Statement
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#example">
+       Example
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mean-and-variance-of-the-binomial-distribution">
+     Mean and Variance of the Binomial Distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hypergeometric-distribution">
+   Hypergeometric Distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rocks-in-bags-example">
+     Rocks in bags example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#playing-cards-example">
+     Playing cards example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-formula">
+     The formula
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hypergeometric-vs-binomial">
+     Hypergeometric vs. Binomial
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#poisson-distribution">
+   Poisson Distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intuition">
+     Intuition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#formula">
+     Formula
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#geometric-distribution">
+   Geometric Distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pdf">
+     PDF
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e-x-and-var-x">
+     E[X] and Var[X]
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forms-of-the-geometric-distribution">
+     Forms of the geometric distribution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#negative-binomial-distribution">
+   Negative Binomial Distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-common-formulation">
+     More common formulation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="common-discrete-distributions">
+<h1>Common Discrete Distributions<a class="headerlink" href="#common-discrete-distributions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="bernoulli-distribution">
+<h2>Bernoulli Distribution<a class="headerlink" href="#bernoulli-distribution" title="Permalink to this headline">¶</a></h2>
+<p>The Bernoulli distribution is appropriate when there are two outcomes. Success happens with probability <span class="math notranslate nohighlight">\(p\)</span> and failure happens with probability <span class="math notranslate nohighlight">\(1-p\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+p(x) =
+    \left\{
+        \begin{array}{cc}
+                p &amp; \mathrm{for\ } x=1 \\
+                1-p &amp; \mathrm{for\ } x=0 \\
+        \end{array} 
+    \right.
+\end{split}\]</div>
+<hr class="docutils" />
+<p><strong>exercise:</strong> Let <span class="math notranslate nohighlight">\(X\)</span> be a Bernoulli random variable. Show that <span class="math notranslate nohighlight">\(E(X)=p\)</span> and that <span class="math notranslate nohighlight">\(V(X)=p \cdot (1-p)\)</span>.</p>
+<hr class="docutils" />
+<p>The number of heads from a single coin flip is an example of a Bernoulli random variable. The event that the coin lands on heads is success, tails is failure. If the coin is fair, <span class="math notranslate nohighlight">\(p\)</span> = .5.</p>
+</div>
+<div class="section" id="binomial-distribution">
+<h2>Binomial Distribution<a class="headerlink" href="#binomial-distribution" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="statement">
+<h3>Statement<a class="headerlink" href="#statement" title="Permalink to this headline">¶</a></h3>
+<p>If we have <span class="math notranslate nohighlight">\(n\)</span> Bernoulli trials each with a probability of success of <span class="math notranslate nohighlight">\(p\)</span>. The random variable representing the total number of successes has the <strong>binomial distribution</strong> with parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>.</p>
+<hr class="docutils" />
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> have the binomial distribution with parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>. We have:</p>
+<div class="math notranslate nohighlight">
+\[p(k) = P(X=k) = {n \choose k}p^k(1-p)^{n-k}\]</div>
+<hr class="docutils" />
+<div class="section" id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<p>We have an unfair coin with probability of heads <span class="math notranslate nohighlight">\(.6\)</span>. To calculate the probability of getting <span class="math notranslate nohighlight">\(3\)</span> heads after flipping the coin <span class="math notranslate nohighlight">\(5\)</span> times is <span class="math notranslate nohighlight">\({5 \choose 3} .6^3 .4^2\)</span>. This is because each sequence that has <span class="math notranslate nohighlight">\(3\)</span> (like HTHTH) heads occurs with probability <span class="math notranslate nohighlight">\(.6^3 .4^2\)</span>. There are <span class="math notranslate nohighlight">\({5 \choose 3}\)</span> ways to select <span class="math notranslate nohighlight">\(3\)</span> heads coins out of <span class="math notranslate nohighlight">\(5\)</span> coins. We add up the probabilities to get <span class="math notranslate nohighlight">\({5 \choose 3}.6^3 .4^2\)</span>.</p>
+</div>
+</div>
+<div class="section" id="mean-and-variance-of-the-binomial-distribution">
+<h3>Mean and Variance of the Binomial Distribution<a class="headerlink" href="#mean-and-variance-of-the-binomial-distribution" title="Permalink to this headline">¶</a></h3>
+<p>It has been given as an exercise to prove that if <span class="math notranslate nohighlight">\(X\)</span> is Bernoulli with parameter <span class="math notranslate nohighlight">\(p\)</span> then <span class="math notranslate nohighlight">\(E(X) = p\)</span> and <span class="math notranslate nohighlight">\(V(X) = p(1-p)\)</span>. Formulas for the binomial distribution are very similar.</p>
+<hr class="docutils" />
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> have the binomial distribution with parameters <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(p\)</span>. We have:</p>
+<div class="math notranslate nohighlight">
+\[E(X) = np\]</div>
+<div class="math notranslate nohighlight">
+\[V(X) = np(1-p)\]</div>
+<hr class="docutils" />
+<p>So if we flip a fair coin 10 times we expect to get <span class="math notranslate nohighlight">\(E(X) = np = 10 \cdot .5 = 5\)</span> heads, which makes sense. There is a not-pretty proof of this but let’s wait to prove this in a pretty way.</p>
+</div>
+</div>
+<div class="section" id="hypergeometric-distribution">
+<h2>Hypergeometric Distribution<a class="headerlink" href="#hypergeometric-distribution" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rocks-in-bags-example">
+<h3>Rocks in bags example<a class="headerlink" href="#rocks-in-bags-example" title="Permalink to this headline">¶</a></h3>
+<p>We have <span class="math notranslate nohighlight">\(15\)</span> rocks in a bag. <span class="math notranslate nohighlight">\(7\)</span> rocks are red and <span class="math notranslate nohighlight">\(8\)</span> are black. We select <span class="math notranslate nohighlight">\(5\)</span> rocks. What is the probability of selecting exactly <span class="math notranslate nohighlight">\(2\)</span> red rocks and <span class="math notranslate nohighlight">\(3\)</span> black rocks.</p>
+<p>Any selection of rocks is equally likely. We can use our formula for the probability when all events are equally likely.</p>
+<div class="math notranslate nohighlight">
+\[\frac{\text{Number of Selected Outcomes}}{\text{Total Possible Outcomes}}\]</div>
+<p>For the denominator we need to find how many ways there are to draw <span class="math notranslate nohighlight">\(5\)</span> rocks from a set of <span class="math notranslate nohighlight">\(15\)</span>. This is <span class="math notranslate nohighlight">\(15 \choose 5\)</span>.</p>
+<p>For the numerator we need to select <span class="math notranslate nohighlight">\(2\)</span> red rocks from a set of <span class="math notranslate nohighlight">\(7\)</span>. This can be done in <span class="math notranslate nohighlight">\(7 \choose 2\)</span> ways. We can select <span class="math notranslate nohighlight">\(3\)</span> blue rocks from <span class="math notranslate nohighlight">\(8\)</span> in <span class="math notranslate nohighlight">\(8 \choose 3\)</span> ways. There are then <span class="math notranslate nohighlight">\({7 \choose 2}{8 \choose 3}\)</span> ways to select the rocks.</p>
+<p>The answer is then:</p>
+<div class="math notranslate nohighlight">
+\[\large \frac{{7 \choose 2}{8 \choose 3}}{{15 \choose 5}}\]</div>
+</div>
+<div class="section" id="playing-cards-example">
+<h3>Playing cards example<a class="headerlink" href="#playing-cards-example" title="Permalink to this headline">¶</a></h3>
+<p>We have a deck of <span class="math notranslate nohighlight">\(40\)</span> cards. <span class="math notranslate nohighlight">\(30\)</span> cards are red and <span class="math notranslate nohighlight">\(10\)</span> are black. We draw a hand of <span class="math notranslate nohighlight">\(5\)</span> cards. Show that the probability of drawing <span class="math notranslate nohighlight">\(3\)</span> black cards is:</p>
+<div class="math notranslate nohighlight">
+\[\large{\frac{{30 \choose 2}{10 \choose 3}}{{40 \choose 5}}}\]</div>
+</div>
+<div class="section" id="the-formula">
+<h3>The formula<a class="headerlink" href="#the-formula" title="Permalink to this headline">¶</a></h3>
+<p>We randomly select <span class="math notranslate nohighlight">\(n\)</span> items from a population of <span class="math notranslate nohighlight">\(N\)</span> items. Let <span class="math notranslate nohighlight">\(r\)</span> represent the number of items from the population classified as a success, and <span class="math notranslate nohighlight">\(k\)</span> be the number of items in the selection classified as successes. Let <span class="math notranslate nohighlight">\(X\)</span> be the random variable representing the number of items in our selection considered successes.</p>
+<div class="math notranslate nohighlight">
+\[P(X=k) = \large{\frac{{{N-r}\choose{n-k}}{{r}\choose{k}}}{{N \choose n}}}\]</div>
+<p>For our previous examples we did not need this formula. It is worth understanding how this formula works, so that you can understand it instead of memorizing it.</p>
+</div>
+<div class="section" id="hypergeometric-vs-binomial">
+<h3>Hypergeometric vs. Binomial<a class="headerlink" href="#hypergeometric-vs-binomial" title="Permalink to this headline">¶</a></h3>
+<p>The hypergeometric distribution is closely related to the binomial distribution. We have a group of <span class="math notranslate nohighlight">\(600\)</span> cowboys and <span class="math notranslate nohighlight">\(400\)</span> astronauts. We select <span class="math notranslate nohighlight">\(4\)</span> people randomly from the <span class="math notranslate nohighlight">\(1000\)</span> to win a prize, what is probability that <span class="math notranslate nohighlight">\(3\)</span> people are cowboys and <span class="math notranslate nohighlight">\(1\)</span> is an astronaut?</p>
+<div class="math notranslate nohighlight">
+\[\large \frac{{600 \choose 3}{400 \choose 1}}{{1000 \choose 4}} = 0.3459\]</div>
+<p>The hypergeometric distribution is different than the binomial distribution because it samples <strong>without replacement</strong>. Let’s change the problem and allow someone to win a prize multiple times. <span class="math notranslate nohighlight">\(4\)</span> names are drawn from a hat. Each time a name is drawn a prize is given and the name is put back in the hat (this is sampling <strong>with replacement</strong>). Since <span class="math notranslate nohighlight">\(600\)</span> of the <span class="math notranslate nohighlight">\(1000\)</span> people are cowboys, any time we make a selection to win a prize there is a probability of <span class="math notranslate nohighlight">\(.6\)</span> that the person is an cowboy. We select <span class="math notranslate nohighlight">\(4\)</span> people, so the distribution of prizes given to cowboys is binomial with parameters <span class="math notranslate nohighlight">\(n = 4\)</span>, <span class="math notranslate nohighlight">\(p = .6\)</span>. The probability of <span class="math notranslate nohighlight">\(3\)</span> cowboys winning prizes and <span class="math notranslate nohighlight">\(1\)</span> astronaut winning a prize is:</p>
+<div class="math notranslate nohighlight">
+\[{4 \choose 3} \cdot .6^3 \cdot .4 = .3456\]</div>
+<p>The hypergeometric distribution (without replacement) gives <span class="math notranslate nohighlight">\(.3459\)</span> and the binomial distribution (with replacement) gives <span class="math notranslate nohighlight">\(.3456\)</span>. Consider that if we draw a single cowboy from the hat, the probability of the next draw being a cowboy is <span class="math notranslate nohighlight">\(.6\)</span> if we sample with replacement and <span class="math notranslate nohighlight">\(\frac{599}{999} \approx.6\)</span> without replacement. This is why our answers are similar. This approximation works best when the population is much larger than the total number of items drawn in the hypergeometric distribution, i.e. <span class="math notranslate nohighlight">\(N\)</span> is large compared to <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</div>
+</div>
+<div class="section" id="poisson-distribution">
+<h2>Poisson Distribution<a class="headerlink" href="#poisson-distribution" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="intuition">
+<h3>Intuition<a class="headerlink" href="#intuition" title="Permalink to this headline">¶</a></h3>
+<p>A Poisson distribution is appropriate when we are counting the number of times something happens in an hour or some unit of time. How many texts do I get in an hour? How often does a car accident happen on interstate 35? These are things that happen at some frequency.</p>
+<p>If you see the phrase <strong>“the average rate”</strong> you should consider that the question might be related to the Poisson distribution.</p>
+<p>Often they give you the rate per hour and you need to convert it to the rate per <span class="math notranslate nohighlight">\(2\)</span> hours, or the daily rate, or the rate per minute.</p>
+<hr class="docutils" />
+<p>The average rate of people spilling their coffee in the office is <span class="math notranslate nohighlight">\(2\)</span> per hour. Generally this rate is called <span class="math notranslate nohighlight">\(\lambda\)</span>, so <span class="math notranslate nohighlight">\(\lambda = 2\)</span>. The rate of people spilling coffee per minute is <span class="math notranslate nohighlight">\(\frac{\lambda}{60} = \frac{1}{30}\)</span>. The rate of people spilling their coffee every day is <span class="math notranslate nohighlight">\(24 \lambda = 48\)</span>.</p>
+<hr class="docutils" />
+<p>In the Poisson model it is assumed that the rate is constant throughout the day and that the events being counted are independent. So our coffee spilling example might not be a Poisson process if the rate of coffee spills are much higher in the morning. Also, if someone spilling their coffee makes other people more likely to spill coffee, the spills are not independent.</p>
+</div>
+<div class="section" id="formula">
+<h3>Formula<a class="headerlink" href="#formula" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> have a Poisson distribution with parameter <span class="math notranslate nohighlight">\(\lambda\)</span>. The probability of <span class="math notranslate nohighlight">\(k\)</span> occurences of something happening is:</p>
+<div class="math notranslate nohighlight">
+\[P(X=k) = \frac{e^{-\lambda}\lambda^k}{k!}\]</div>
+<p>Let’s verify that the sum of all probabilities is 1.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\sum_{n=0}^{\infty} P(X=k) &amp;= \displaystyle\sum_{k=0}^{\infty}\frac{e^{-\lambda}\lambda^k}{k!} \\
+&amp;=  e^{-\lambda} \displaystyle\sum_{k=0}^{\infty} \frac{\lambda^k}{k!} \\
+&amp;= e^{-\lambda}e^\lambda=1
+\end{align*}
+\end{split}\]</div>
+<p>We use a fact from Calculus 2 that <span class="math notranslate nohighlight">\(e^\lambda = \sum_{k=0}^{\infty} \frac{\lambda^k}{k!}\)</span></p>
+</div>
+<div class="section" id="id1">
+<h3>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Assume a Poisson model. The average rate of people spilling their coffee in the office throughout the work day is <span class="math notranslate nohighlight">\(2.5\)</span> spills per hour. What is the probability that <span class="math notranslate nohighlight">\(2\)</span> people spill their coffee between <span class="math notranslate nohighlight">\(8\)</span> A.M. and <span class="math notranslate nohighlight">\(9\)</span> A.M., and <span class="math notranslate nohighlight">\(6\)</span> people spill their coffee between <span class="math notranslate nohighlight">\(11\)</span> A.M. and <span class="math notranslate nohighlight">\(1\)</span> P.M.?</p>
+<p>Because the number of spills across time intervals is independent:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}P(\text{2 spills from 8-9 A.M. and 6 spills from 11 A.M.-1 P.M.}) = \\
+P(\text{2 spills from 8-9 A.M.}) \cdot P(\text{6 spills from 11 A.M.-1 P.M.})\end{split}\]</div>
+<p>For the calculation from <span class="math notranslate nohighlight">\(\text{8-9 A.M.}\)</span> we use <span class="math notranslate nohighlight">\(\lambda = 2.5\)</span> since the time interval is <span class="math notranslate nohighlight">\(1\)</span> hour.</p>
+<div class="math notranslate nohighlight">
+\[ P(\text{2 spills from 8-9}) =\frac{e^{-2.5}2.5^2}{2!}\]</div>
+<p>For the calculation from <span class="math notranslate nohighlight">\(\text{11 A.M.- 1 P.M.}\)</span> we use <span class="math notranslate nohighlight">\(\lambda = \lambda_\text{1 hour} \cdot t = 2.5 \cdot 2 =  5\)</span> since the time interval is <span class="math notranslate nohighlight">\(2\)</span> hours.</p>
+<div class="math notranslate nohighlight">
+\[P(\text{6 spills from 11 A.M.-1 P.M.}) =\frac{e^{-5}5^6}{6!}\]</div>
+<p>We multiply these quantities to get the answer:</p>
+<div class="math notranslate nohighlight">
+\[\frac{e^{-2.5}2.5^2}{2!} \cdot \frac{e^{-5}5^6}{6!} = .03751\]</div>
+</div>
+</div>
+<div class="section" id="geometric-distribution">
+<h2>Geometric Distribution<a class="headerlink" href="#geometric-distribution" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be the number of tries it takes to land heads when flipping an unfair coin if the probability of heads is <span class="math notranslate nohighlight">\(p=.6\)</span>. The geometric distribution is when you take independent bernoulli trials until the first success. Each coin flip is an independent bernoulli trial with the same probability of success.</p>
+<p>The probability of success on the first attempt is <span class="math notranslate nohighlight">\(.6\)</span>. The probability of success on the second attempt is <span class="math notranslate nohighlight">\(.4 \cdot .6\)</span>, the sequence <span class="math notranslate nohighlight">\(TH\)</span>. Success on the third attempt happens with the sequence <span class="math notranslate nohighlight">\(TTH\)</span> with probability <span class="math notranslate nohighlight">\(.4 \cdot .4 \cdot .6\)</span>.</p>
+<div class="section" id="pdf">
+<h3>PDF<a class="headerlink" href="#pdf" title="Permalink to this headline">¶</a></h3>
+<p>We perform independent Bernoulli trials, each having a probability of success <span class="math notranslate nohighlight">\(p\)</span> and probability of failure <span class="math notranslate nohighlight">\(q\)</span>. Let <span class="math notranslate nohighlight">\(X\)</span> represent the trial on which the first success occurs.</p>
+<div class="math notranslate nohighlight">
+\[P(X=k) = q^{k-1}p\]</div>
+</div>
+<div class="section" id="e-x-and-var-x">
+<h3>E[X] and Var[X]<a class="headerlink" href="#e-x-and-var-x" title="Permalink to this headline">¶</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a geometric random variable with parameter p.</p>
+<div class="math notranslate nohighlight">
+\[E(X) = \frac{1}{p}\]</div>
+<div class="math notranslate nohighlight">
+\[V(X) = \frac{1-p}{p^2}\]</div>
+</div>
+<div class="section" id="forms-of-the-geometric-distribution">
+<h3>Forms of the geometric distribution<a class="headerlink" href="#forms-of-the-geometric-distribution" title="Permalink to this headline">¶</a></h3>
+<p>So far we have been counting the number of trials until success. Another way to do this is to count the number of failures before success. I like first way, because <span class="math notranslate nohighlight">\(E(X) = \frac{1}{p}\)</span> which I think is pretty.</p>
+</div>
+</div>
+<div class="section" id="negative-binomial-distribution">
+<h2>Negative Binomial Distribution<a class="headerlink" href="#negative-binomial-distribution" title="Permalink to this headline">¶</a></h2>
+<p>The geometric distribution has a parameter <span class="math notranslate nohighlight">\(p\)</span> and the value of the random variable is the first successful attempt. The negative binomial distribution has two parameters, <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(r\)</span>. The negative binomial distribution counts the attempt on which the <span class="math notranslate nohighlight">\(r^{th}\)</span> success occurs.</p>
+<p>We flip an unfair coin with a probability of <span class="math notranslate nohighlight">\(.6\)</span> for heads and <span class="math notranslate nohighlight">\(.4\)</span> for tails. Let <span class="math notranslate nohighlight">\(X\)</span> be the trial on which we get the <span class="math notranslate nohighlight">\(3rd\)</span> head. We wish to know <span class="math notranslate nohighlight">\(P(X=5)\)</span>. Let’s first consider that the <span class="math notranslate nohighlight">\(5th\)</span> flip must be a head. Of the first <span class="math notranslate nohighlight">\(4\)</span> flips, <span class="math notranslate nohighlight">\(2\)</span> of them are heads. We get <span class="math notranslate nohighlight">\(2\)</span> heads in the first four flips with probability:</p>
+<div class="math notranslate nohighlight">
+\[{4 \choose 2}.6^2.4^2\]</div>
+<p>We need the fifth flip to be heads so we multiply this probability by <span class="math notranslate nohighlight">\(.6\)</span> to get our answer of:</p>
+<div class="math notranslate nohighlight">
+\[{4 \choose 2}.6^3.4^2\]</div>
+<p>Our formula is then <span class="math notranslate nohighlight">\(P(X=x) = {{x-1} \choose {r-1}}p^r(1-p)^{x-r}\)</span>.</p>
+<div class="section" id="more-common-formulation">
+<h3>More common formulation<a class="headerlink" href="#more-common-formulation" title="Permalink to this headline">¶</a></h3>
+<p>A more common way of representing this is to count the number of failures until the <span class="math notranslate nohighlight">\(r^{th}\)</span> success.</p>
+<hr class="docutils" />
+<p>Let <span class="math notranslate nohighlight">\(Y\)</span> be the number of failures until the <span class="math notranslate nohighlight">\(rth\)</span> success. We calculate the p.d.f. of <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[P(Y=y)={{r+y-1} \choose y}p^r(1-p)^y\]</div>
+<hr class="docutils" />
+<p>If <span class="math notranslate nohighlight">\(X\)</span> is the R.V. representing the attempt on which the <span class="math notranslate nohighlight">\(rth\)</span> success occurs and <span class="math notranslate nohighlight">\(Y\)</span> is the R.V. representing the number of failures before the <span class="math notranslate nohighlight">\(rth\)</span> success, then <span class="math notranslate nohighlight">\(Y = X - r\)</span> because <span class="math notranslate nohighlight">\(\text{failures = attempts - successes}\)</span>. Regardless of if the question asks you to count failures or attempts, the prepared student should be able to deduce the probability using first principles.</p>
+<p>We give formulas for the expectation and variance for this formulation of the negative binomial distribution.</p>
+<hr class="docutils" />
+<p>Let <span class="math notranslate nohighlight">\(Y\)</span> be the number of failures until the <span class="math notranslate nohighlight">\(rth\)</span> success.</p>
+<div class="math notranslate nohighlight">
+\[E(Y) = \frac{r(1-p)}{p}\]</div>
+<div class="math notranslate nohighlight">
+\[V(Y) = \frac{r(1-p)}{p^2}\]</div>
+<hr class="docutils" />
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="04-random-variables.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Random Variables</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="06-continuousdistributions.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Continuous Distributions</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Matthew Caseres<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
